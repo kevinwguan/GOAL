@@ -3270,5 +3270,8 @@
     "met4": "met4",
     "met5": "met5"
   },
-  "platform": "sky130hs"
+  "platform": "sky130hs",
+  "tech_lef": "lef/sky130_fd_sc_hs.tlef",
+  "klayout_tech": "sky130hs.lyt",
+  "rc_rules": "rcx_patterns.rules"
 }

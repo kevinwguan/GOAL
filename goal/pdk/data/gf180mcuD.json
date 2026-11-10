@@ -1073,5 +1073,8 @@
     "met4": "Metal4",
     "met5": "Metal5"
   },
-  "platform": "gf180"
+  "platform": "gf180",
+  "tech_lef": "lef/gf180mcu_5LM_1TM_9K_9t_tech.lef",
+  "klayout_tech": "KLayout/gf180mcu_5LM_1TM_9K_9t.lyt",
+  "rc_rules": "openROAD/rcx/gf180mcu_1p5m_1tm_9k_sp_smim_OPTB_typ.rules"
 }
