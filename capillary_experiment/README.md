@@ -188,8 +188,12 @@ requires iteration 1 to clear the initial four violations.
 | total wirelength (µm)       | 153  | 165  | 605       |
 | &nbsp;&nbsp;met1 (µm)       | 53   | 68   | 200       |
 | &nbsp;&nbsp;met2 (µm)       | 99   | 96   | 391       |
-| vias (all met1→met2)        | 6    | 6    | 25        |
+| via count                  | 6    | 6    | 25        |
 | DRC violations              | 0    | 0    | 0         |
+
+`cap_split` also uses 2 µm of li1 and 11 µm of met3. Its 25 vias comprise
+4 li1→met1, 19 met1→met2, and 2 met2→met3 transitions; the six vias in
+each shared-port mode are all met1→met2.
 
 `cap` moves 15 µm of routing into met1 (the local fan-out to each finger
 stub) while the met2 trunk shrinks slightly. `cap_split` quadruples the
