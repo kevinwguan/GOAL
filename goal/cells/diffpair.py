@@ -2,6 +2,7 @@
 
 import gdsfactory as gf
 from goal.pdk import PDK
+from goal.lef.ports import port_box
 from .geometry import rect, port
 from .mosfet import mosfet
 
@@ -28,10 +29,7 @@ def diffpair(pdk: PDK) -> gf.Component:
         )
         ref.dmove((x, -ref.dymin))
         for pin in ref.ports:
-            x0, y0, x1, y1 = pin.info["rect"]
-            w, h = x1 - x0, y1 - y0
-            cx, cy = pin.dcenter
-            box = (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
+            box = port_box(pin)
             if pin.name == "B":
                 bulk_boxes.append(box)
             else:

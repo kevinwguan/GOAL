@@ -42,7 +42,12 @@ def port(
         port_type="electrical",
     )
     p.info["net"] = alias
-    p.info["rect"] = list(box)
+    p.info["rect"] = [x0, y0, x1, y1]
+    inverse = p.dcplx_trans.inverted()
+    corners = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+    p.info["rect_local"] = [
+        [point.x, point.y] for point in (inverse * kdb.DPoint(*xy) for xy in corners)
+    ]
     p.info["generic_layer"] = layer
     return p
 
