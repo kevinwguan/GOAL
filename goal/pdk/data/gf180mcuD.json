@@ -1,0 +1,1077 @@
+{
+  "name": "gf180mcuD",
+  "units": "um",
+  "layer_map": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp",
+  "layer_map_sha256": "4d0e42a66b16f598bc4c401c193e60b8aeabc45bba7ff96d2f93e84cf6acb31f",
+  "contact_stack": [
+    "contact",
+    "met1"
+  ],
+  "layers": {
+    "native.Border": {
+      "pair": [
+        63,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Border"
+    },
+    "native.CAP_MK": {
+      "pair": [
+        117,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#CAP_MK"
+    },
+    "native.COMP": {
+      "pair": [
+        22,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#COMP"
+    },
+    "native.COMP_Dummy": {
+      "pair": [
+        22,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#COMP_Dummy"
+    },
+    "native.COMP_Label": {
+      "pair": [
+        22,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#COMP_Label"
+    },
+    "native.Contact": {
+      "pair": [
+        33,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Contact"
+    },
+    "native.DEV_WF_MK": {
+      "pair": [
+        128,
+        17
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#DEV_WF_MK"
+    },
+    "native.DIODE_MK": {
+      "pair": [
+        115,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#DIODE_MK"
+    },
+    "native.DNWELL": {
+      "pair": [
+        12,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#DNWELL"
+    },
+    "native.DRC_BJT": {
+      "pair": [
+        127,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#DRC_BJT"
+    },
+    "native.Dualgate": {
+      "pair": [
+        55,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Dualgate"
+    },
+    "native.EFUSE_MK": {
+      "pair": [
+        80,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#EFUSE_MK"
+    },
+    "native.ESD": {
+      "pair": [
+        24,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#ESD"
+    },
+    "native.ESD_MK": {
+      "pair": [
+        24,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#ESD_MK"
+    },
+    "native.FHRES": {
+      "pair": [
+        227,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#FHRES"
+    },
+    "native.FuseTop": {
+      "pair": [
+        75,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#FuseTop"
+    },
+    "native.FuseWindow_D": {
+      "pair": [
+        96,
+        1
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#FuseWindow_D"
+    },
+    "native.GUARD_RING_MK": {
+      "pair": [
+        167,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#GUARD_RING_MK"
+    },
+    "native.HVPOLYRS": {
+      "pair": [
+        123,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#HVPOLYRS"
+    },
+    "native.IND_MK": {
+      "pair": [
+        151,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#IND_MK"
+    },
+    "native.LDMOS_XTOR": {
+      "pair": [
+        226,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#LDMOS_XTOR"
+    },
+    "native.LVPWELL": {
+      "pair": [
+        204,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#LVPWELL"
+    },
+    "native.LVS_BJT": {
+      "pair": [
+        118,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#LVS_BJT"
+    },
+    "native.LVS_Drain": {
+      "pair": [
+        100,
+        7
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#LVS_Drain"
+    },
+    "native.LVS_IO": {
+      "pair": [
+        119,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#LVS_IO"
+    },
+    "native.LVS_RF": {
+      "pair": [
+        100,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#LVS_RF"
+    },
+    "native.LVS_Source": {
+      "pair": [
+        100,
+        8
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#LVS_Source"
+    },
+    "native.Latchup_MK": {
+      "pair": [
+        137,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Latchup_MK"
+    },
+    "native.MCELL_FEOL_MK": {
+      "pair": [
+        11,
+        17
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MCELL_FEOL_MK"
+    },
+    "native.MDIODE": {
+      "pair": [
+        116,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MDIODE"
+    },
+    "native.MIM_L_MK": {
+      "pair": [
+        117,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MIM_L_MK"
+    },
+    "native.MOS_CAP_MK": {
+      "pair": [
+        166,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MOS_CAP_MK"
+    },
+    "native.MTPMARK": {
+      "pair": [
+        122,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MTPMARK"
+    },
+    "native.MVPSD": {
+      "pair": [
+        11,
+        39
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MVPSD"
+    },
+    "native.MVSD": {
+      "pair": [
+        210,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MVSD"
+    },
+    "native.Metal1": {
+      "pair": [
+        34,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1"
+    },
+    "native.Metal1_BLK": {
+      "pair": [
+        34,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1_BLK"
+    },
+    "native.Metal1_Dummy": {
+      "pair": [
+        34,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1_Dummy"
+    },
+    "native.Metal1_Label": {
+      "pair": [
+        34,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1_Label"
+    },
+    "native.Metal1_Res": {
+      "pair": [
+        110,
+        11
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1_Res"
+    },
+    "native.Metal1_Slot": {
+      "pair": [
+        34,
+        3
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1_Slot"
+    },
+    "native.Metal2": {
+      "pair": [
+        36,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal2"
+    },
+    "native.Metal2_BLK": {
+      "pair": [
+        36,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal2_BLK"
+    },
+    "native.Metal2_Dummy": {
+      "pair": [
+        36,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal2_Dummy"
+    },
+    "native.Metal2_Label": {
+      "pair": [
+        36,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal2_Label"
+    },
+    "native.Metal2_Res": {
+      "pair": [
+        110,
+        12
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal2_Res"
+    },
+    "native.Metal2_Slot": {
+      "pair": [
+        36,
+        3
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal2_Slot"
+    },
+    "native.Metal3": {
+      "pair": [
+        42,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal3"
+    },
+    "native.Metal3_BLK": {
+      "pair": [
+        42,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal3_BLK"
+    },
+    "native.Metal3_Dummy": {
+      "pair": [
+        42,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal3_Dummy"
+    },
+    "native.Metal3_Label": {
+      "pair": [
+        42,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal3_Label"
+    },
+    "native.Metal3_Res": {
+      "pair": [
+        110,
+        13
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal3_Res"
+    },
+    "native.Metal3_Slot": {
+      "pair": [
+        42,
+        3
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal3_Slot"
+    },
+    "native.Metal4": {
+      "pair": [
+        46,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal4"
+    },
+    "native.Metal4_BLK": {
+      "pair": [
+        46,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal4_BLK"
+    },
+    "native.Metal4_Dummy": {
+      "pair": [
+        46,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal4_Dummy"
+    },
+    "native.Metal4_Label": {
+      "pair": [
+        46,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal4_Label"
+    },
+    "native.Metal4_Res": {
+      "pair": [
+        110,
+        14
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal4_Res"
+    },
+    "native.Metal4_Slot": {
+      "pair": [
+        46,
+        3
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal4_Slot"
+    },
+    "native.Metal5": {
+      "pair": [
+        81,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal5"
+    },
+    "native.Metal5_BLK": {
+      "pair": [
+        81,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal5_BLK"
+    },
+    "native.Metal5_Dummy": {
+      "pair": [
+        81,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal5_Dummy"
+    },
+    "native.Metal5_Label": {
+      "pair": [
+        81,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal5_Label"
+    },
+    "native.Metal5_Res": {
+      "pair": [
+        110,
+        15
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal5_Res"
+    },
+    "native.Metal5_Slot": {
+      "pair": [
+        81,
+        3
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal5_Slot"
+    },
+    "native.Metal6_Res": {
+      "pair": [
+        110,
+        16
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal6_Res"
+    },
+    "native.MetalT_BLK": {
+      "pair": [
+        53,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MetalT_BLK"
+    },
+    "native.MetalTop": {
+      "pair": [
+        53,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MetalTop"
+    },
+    "native.MetalTop_Dummy": {
+      "pair": [
+        53,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MetalTop_Dummy"
+    },
+    "native.MetalTop_Label": {
+      "pair": [
+        53,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MetalTop_Label"
+    },
+    "native.MetalTop_Slot": {
+      "pair": [
+        53,
+        3
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#MetalTop_Slot"
+    },
+    "native.NAT": {
+      "pair": [
+        5,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#NAT"
+    },
+    "native.NDMY": {
+      "pair": [
+        111,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#NDMY"
+    },
+    "native.NEO_EE_MK": {
+      "pair": [
+        88,
+        17
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#NEO_EE_MK"
+    },
+    "native.Nplus": {
+      "pair": [
+        32,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Nplus"
+    },
+    "native.Nwell": {
+      "pair": [
+        21,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Nwell"
+    },
+    "native.OPC_drc": {
+      "pair": [
+        124,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#OPC_drc"
+    },
+    "native.OTP_MK": {
+      "pair": [
+        173,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#OTP_MK"
+    },
+    "native.PLFUSE": {
+      "pair": [
+        125,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#PLFUSE"
+    },
+    "native.PMNDMY": {
+      "pair": [
+        152,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#PMNDMY"
+    },
+    "native.POLYFUSE": {
+      "pair": [
+        220,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#POLYFUSE"
+    },
+    "native.PROBE_MK": {
+      "pair": [
+        13,
+        17
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#PROBE_MK"
+    },
+    "native.PR_bndry": {
+      "pair": [
+        0,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#PR_bndry"
+    },
+    "native.Pad": {
+      "pair": [
+        37,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Pad"
+    },
+    "native.Poly2": {
+      "pair": [
+        30,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Poly2"
+    },
+    "native.Poly2_Dummy": {
+      "pair": [
+        30,
+        4
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Poly2_Dummy"
+    },
+    "native.Poly2_Label": {
+      "pair": [
+        30,
+        10
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Poly2_Label"
+    },
+    "native.Pplus": {
+      "pair": [
+        31,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Pplus"
+    },
+    "native.RES_MK": {
+      "pair": [
+        110,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#RES_MK"
+    },
+    "native.Resistor": {
+      "pair": [
+        62,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Resistor"
+    },
+    "native.SAB": {
+      "pair": [
+        49,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#SAB"
+    },
+    "native.Schottky_diode": {
+      "pair": [
+        241,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Schottky_diode"
+    },
+    "native.SramCore": {
+      "pair": [
+        108,
+        5
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#SramCore"
+    },
+    "native.UBMEPlate": {
+      "pair": [
+        185,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#UBMEPlate"
+    },
+    "native.UBMPArray": {
+      "pair": [
+        184,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#UBMPArray"
+    },
+    "native.UBMPPeri": {
+      "pair": [
+        183,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#UBMPPeri"
+    },
+    "native.V5_XTOR": {
+      "pair": [
+        112,
+        1
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#V5_XTOR"
+    },
+    "native.Via1": {
+      "pair": [
+        35,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Via1"
+    },
+    "native.Via2": {
+      "pair": [
+        38,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Via2"
+    },
+    "native.Via3": {
+      "pair": [
+        40,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Via3"
+    },
+    "native.Via4": {
+      "pair": [
+        41,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Via4"
+    },
+    "native.Via5": {
+      "pair": [
+        82,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Via5"
+    },
+    "native.WELL_DIODE_MK": {
+      "pair": [
+        153,
+        51
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#WELL_DIODE_MK"
+    },
+    "native.YMTP_MK": {
+      "pair": [
+        86,
+        17
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#YMTP_MK"
+    },
+    "native.ZENER": {
+      "pair": [
+        178,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#ZENER"
+    },
+    "native.case_txt_mk": {
+      "pair": [
+        13,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#case_txt_mk"
+    },
+    "native.fail_mk": {
+      "pair": [
+        3,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#fail_mk"
+    },
+    "native.pass_mk": {
+      "pair": [
+        2,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#pass_mk"
+    },
+    "native.polygon_mk": {
+      "pair": [
+        4,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#polygon_mk"
+    },
+    "native.rule_txt_mk": {
+      "pair": [
+        11,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#rule_txt_mk"
+    },
+    "native.unnamed_12_222": {
+      "pair": [
+        12,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#unnamed_12_222"
+    },
+    "native.unnamed_14_222": {
+      "pair": [
+        14,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#unnamed_14_222"
+    },
+    "native.unnamed_15_222": {
+      "pair": [
+        15,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#unnamed_15_222"
+    },
+    "native.unnamed_1_222": {
+      "pair": [
+        1,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#unnamed_1_222"
+    },
+    "native.unnamed_5_222": {
+      "pair": [
+        5,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#unnamed_5_222"
+    },
+    "native.violation_mk": {
+      "pair": [
+        6,
+        222
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#violation_mk"
+    },
+    "active": {
+      "pair": [
+        22,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#COMP"
+    },
+    "tap": {
+      "pair": [
+        22,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#COMP"
+    },
+    "poly": {
+      "pair": [
+        30,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Poly2"
+    },
+    "nimplant": {
+      "pair": [
+        32,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Nplus"
+    },
+    "pimplant": {
+      "pair": [
+        31,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Pplus"
+    },
+    "nwell": {
+      "pair": [
+        21,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Nwell"
+    },
+    "contact": {
+      "pair": [
+        33,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Contact"
+    },
+    "local": {
+      "pair": [
+        34,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1"
+    },
+    "met1": {
+      "pair": [
+        34,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal1"
+    },
+    "met2": {
+      "pair": [
+        36,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal2"
+    },
+    "met3": {
+      "pair": [
+        42,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal3"
+    },
+    "met4": {
+      "pair": [
+        46,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal4"
+    },
+    "met5": {
+      "pair": [
+        81,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Metal5"
+    },
+    "via1": {
+      "pair": [
+        35,
+        0
+      ],
+      "source": "gf180mcuD/libs.tech/klayout/tech/gf180mcu.lyp#Via1"
+    }
+  },
+  "rules": {
+    "poly_surround": {
+      "value": 0.065,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:55"
+    },
+    "diff_surround": {
+      "value": 0.065,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:56"
+    },
+    "gate_to_diffcont": {
+      "value": 0.26,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:57"
+    },
+    "gate_to_polycont": {
+      "value": 0.28,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:58"
+    },
+    "gate_extension": {
+      "value": 0.22,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:59"
+    },
+    "diff_extension": {
+      "value": 0.23,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:60"
+    },
+    "contact_size": {
+      "value": 0.23,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:61"
+    },
+    "via_size": {
+      "value": 0.26,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:62"
+    },
+    "metal_surround": {
+      "value": 0.055,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:63"
+    },
+    "sub_surround": {
+      "value": 0.12,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:64"
+    },
+    "diff_spacing": {
+      "value": 0.33,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:65"
+    },
+    "poly_spacing": {
+      "value": 0.24,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:66"
+    },
+    "diffres_spacing": {
+      "value": 0.4,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:67"
+    },
+    "polyres_spacing": {
+      "value": 0.4,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:68"
+    },
+    "diff_poly_space": {
+      "value": 0.1,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:69"
+    },
+    "diff_gate_space": {
+      "value": 0.11,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:70"
+    },
+    "metal_spacing": {
+      "value": 0.23,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:71"
+    },
+    "mmetal_spacing": {
+      "value": 0.38,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:72"
+    },
+    "sblk_to_cont": {
+      "value": 0.33,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:73"
+    },
+    "sblk_diff_space": {
+      "value": 0.6,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tcl:75"
+    },
+    "tap_surround": {
+      "value": 0.065,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2621"
+    },
+    "met1_area": {
+      "value": 0.1444,
+      "unit": "um2",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2674"
+    },
+    "poly_width": {
+      "value": 0.18,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2568"
+    },
+    "active_width": {
+      "value": 0.22,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2500"
+    },
+    "met1_width": {
+      "value": 0.23,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2672"
+    },
+    "well_width": {
+      "value": 0.86,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2447"
+    },
+    "well_spacing": {
+      "value": 0.6,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2448"
+    },
+    "well_overlap_p": {
+      "value": 0.43,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2523"
+    },
+    "well_overlap_tap": {
+      "value": 0.12,
+      "unit": "um",
+      "source": "gf180mcuD/libs.tech/magic/gf180mcuD.tech:2519"
+    }
+  },
+  "lef_layers": {
+    "met1": "Metal1",
+    "met2": "Metal2",
+    "met3": "Metal3",
+    "met4": "Metal4",
+    "met5": "Metal5"
+  },
+  "platform": "gf180"
+}

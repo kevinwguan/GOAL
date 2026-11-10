@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goal"
+version = "0.1.0"
+description = "GDSFactory OpenROAD Automated Layout"
+requires-python = ">=3.10"
+dependencies = ["gdsfactory==8.32.2", "klayout>=0.30.0,<0.31", "numpy>=1.26"]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "ruff>=0.8"]
+
+[project.scripts]
+goal = "goal.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["goal*"]
+
+[tool.setuptools.package-data]
+"goal.pdk" = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["openroad: requires OpenROAD and a configured platform", "magic: requires Magic and PDK_ROOT"]

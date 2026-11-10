@@ -11,3 +11,10 @@ __pycache__/
 capillary_experiment/OpenROAD-flow-scripts
 capillary_experiment/out/
 capillary_experiment/reports/*/openroad.log
+
+# GOAL local tools and generated outputs
+build/
+out/
+.scratch/
+*.egg-info/
+.pytest_cache/

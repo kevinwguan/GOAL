@@ -1,0 +1,3274 @@
+{
+  "name": "sky130A",
+  "units": "um",
+  "layer_map": "sky130A/libs.tech/klayout/tech/sky130A.lyp",
+  "layer_map_sha256": "7caca63445153c269bfb8d4431ae9c89eebdfd3c5835cc4966aba8c0018f4ddf",
+  "contact_stack": [
+    "contact",
+    "local",
+    "local_via",
+    "met1"
+  ],
+  "layers": {
+    "native.areaid.analog": {
+      "pair": [
+        81,
+        79
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.analog"
+    },
+    "native.areaid.core": {
+      "pair": [
+        81,
+        2
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.core"
+    },
+    "native.areaid.critCorner": {
+      "pair": [
+        81,
+        51
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.critCorner"
+    },
+    "native.areaid.critSid": {
+      "pair": [
+        81,
+        52
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.critSid"
+    },
+    "native.areaid.deadZon": {
+      "pair": [
+        81,
+        50
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.deadZon"
+    },
+    "native.areaid.dieCut": {
+      "pair": [
+        81,
+        11
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.dieCut"
+    },
+    "native.areaid.diode": {
+      "pair": [
+        81,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.diode"
+    },
+    "native.areaid.esd": {
+      "pair": [
+        81,
+        19
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.esd"
+    },
+    "native.areaid.etest": {
+      "pair": [
+        81,
+        101
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.etest"
+    },
+    "native.areaid.extendedDrain": {
+      "pair": [
+        81,
+        57
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.extendedDrain"
+    },
+    "native.areaid.frame": {
+      "pair": [
+        81,
+        3
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.frame"
+    },
+    "native.areaid.frameRect": {
+      "pair": [
+        81,
+        12
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.frameRect"
+    },
+    "native.areaid.hvnwell": {
+      "pair": [
+        81,
+        63
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.hvnwell"
+    },
+    "native.areaid.injection": {
+      "pair": [
+        81,
+        17
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.injection"
+    },
+    "native.areaid.lowTapDensity": {
+      "pair": [
+        81,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.lowTapDensity"
+    },
+    "native.areaid.lvNative": {
+      "pair": [
+        81,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.lvNative"
+    },
+    "native.areaid.moduleCut": {
+      "pair": [
+        81,
+        10
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.moduleCut"
+    },
+    "native.areaid.notCritSide": {
+      "pair": [
+        81,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.notCritSide"
+    },
+    "native.areaid.opcDrop": {
+      "pair": [
+        81,
+        54
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.opcDrop"
+    },
+    "native.areaid.photo": {
+      "pair": [
+        81,
+        81
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.photo"
+    },
+    "native.areaid.rdlprobepad": {
+      "pair": [
+        81,
+        27
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.rdlprobepad"
+    },
+    "native.areaid.rfdiode": {
+      "pair": [
+        81,
+        125
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.rfdiode"
+    },
+    "native.areaid.seal": {
+      "pair": [
+        81,
+        1
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.seal"
+    },
+    "native.areaid.sigPadDiff": {
+      "pair": [
+        81,
+        6
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.sigPadDiff"
+    },
+    "native.areaid.sigPadMetNtr": {
+      "pair": [
+        81,
+        8
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.sigPadMetNtr"
+    },
+    "native.areaid.sigPadWell": {
+      "pair": [
+        81,
+        7
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.sigPadWell"
+    },
+    "native.areaid.standardc": {
+      "pair": [
+        81,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.standardc"
+    },
+    "native.areaid.substrateCut": {
+      "pair": [
+        81,
+        53
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.substrateCut"
+    },
+    "native.areaid.waffleWindow": {
+      "pair": [
+        81,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#areaid.waffleWindow"
+    },
+    "native.blanking.drawing": {
+      "pair": [
+        124,
+        40
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#blanking.drawing"
+    },
+    "native.boundary": {
+      "pair": [
+        235,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#boundary"
+    },
+    "native.boundary@235/250": {
+      "pair": [
+        235,
+        250
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#boundary@235/250"
+    },
+    "native.boundary@235/252": {
+      "pair": [
+        235,
+        252
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#boundary@235/252"
+    },
+    "native.boundary@236/0": {
+      "pair": [
+        236,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#boundary@236/0"
+    },
+    "native.bump.drawing": {
+      "pair": [
+        127,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#bump.drawing"
+    },
+    "native.capacitor.drawing": {
+      "pair": [
+        82,
+        64
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#capacitor.drawing"
+    },
+    "native.capm.drawing": {
+      "pair": [
+        89,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#capm.drawing"
+    },
+    "native.capm2.drawing": {
+      "pair": [
+        97,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#capm2.drawing"
+    },
+    "native.cbump.mask": {
+      "pair": [
+        101,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cbump.mask"
+    },
+    "native.cctm1.drawing": {
+      "pair": [
+        101,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cctm1.drawing"
+    },
+    "native.cctm1.mask": {
+      "pair": [
+        35,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cctm1.mask"
+    },
+    "native.cctm1.maskAdd": {
+      "pair": [
+        101,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cctm1.maskAdd"
+    },
+    "native.cctm1.maskDrop": {
+      "pair": [
+        101,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cctm1.maskDrop"
+    },
+    "native.ccu1m.mask": {
+      "pair": [
+        93,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ccu1m.mask"
+    },
+    "native.cdnm.drawing": {
+      "pair": [
+        110,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cdnm.drawing"
+    },
+    "native.cdnm.mask": {
+      "pair": [
+        48,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cdnm.mask"
+    },
+    "native.cdnm.maskAdd": {
+      "pair": [
+        110,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cdnm.maskAdd"
+    },
+    "native.cdnm.maskDrop": {
+      "pair": [
+        110,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cdnm.maskDrop"
+    },
+    "native.cfom.drawing": {
+      "pair": [
+        22,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cfom.drawing"
+    },
+    "native.cfom.fill": {
+      "pair": [
+        23,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cfom.fill"
+    },
+    "native.cfom.mask": {
+      "pair": [
+        23,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cfom.mask"
+    },
+    "native.cfom.maskAdd": {
+      "pair": [
+        22,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cfom.maskAdd"
+    },
+    "native.cfom.maskDrop": {
+      "pair": [
+        22,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cfom.maskDrop"
+    },
+    "native.cfom.waffleDrop": {
+      "pair": [
+        22,
+        24
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cfom.waffleDrop"
+    },
+    "native.chvntm.drawing": {
+      "pair": [
+        38,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvntm.drawing"
+    },
+    "native.chvntm.mask": {
+      "pair": [
+        39,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvntm.mask"
+    },
+    "native.chvntm.maskAdd": {
+      "pair": [
+        38,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvntm.maskAdd"
+    },
+    "native.chvntm.maskDrop": {
+      "pair": [
+        38,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvntm.maskDrop"
+    },
+    "native.chvtpm.drawing": {
+      "pair": [
+        88,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtpm.drawing"
+    },
+    "native.chvtpm.mask": {
+      "pair": [
+        97,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtpm.mask"
+    },
+    "native.chvtpm.maskAdd": {
+      "pair": [
+        97,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtpm.maskAdd"
+    },
+    "native.chvtpm.maskDrop": {
+      "pair": [
+        97,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtpm.maskDrop"
+    },
+    "native.chvtrm.drawing": {
+      "pair": [
+        98,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtrm.drawing"
+    },
+    "native.chvtrm.mask": {
+      "pair": [
+        98,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtrm.mask"
+    },
+    "native.chvtrm.maskAdd": {
+      "pair": [
+        98,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtrm.maskAdd"
+    },
+    "native.chvtrm.maskDrop": {
+      "pair": [
+        98,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#chvtrm.maskDrop"
+    },
+    "native.cldntm.drawing": {
+      "pair": [
+        11,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cldntm.drawing"
+    },
+    "native.cldntm.mask": {
+      "pair": [
+        11,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cldntm.mask"
+    },
+    "native.cli1m.drawing": {
+      "pair": [
+        115,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cli1m.drawing"
+    },
+    "native.cli1m.fill": {
+      "pair": [
+        56,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cli1m.fill"
+    },
+    "native.cli1m.mask": {
+      "pair": [
+        56,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cli1m.mask"
+    },
+    "native.cli1m.maskAdd": {
+      "pair": [
+        115,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cli1m.maskAdd"
+    },
+    "native.cli1m.maskDrop": {
+      "pair": [
+        115,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cli1m.maskDrop"
+    },
+    "native.clicm1.drawing": {
+      "pair": [
+        106,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clicm1.drawing"
+    },
+    "native.clicm1.mask": {
+      "pair": [
+        43,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clicm1.mask"
+    },
+    "native.clicm1.maskAdd": {
+      "pair": [
+        106,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clicm1.maskAdd"
+    },
+    "native.clicm1.maskDrop": {
+      "pair": [
+        106,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clicm1.maskDrop"
+    },
+    "native.clvom.drawing": {
+      "pair": [
+        45,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvom.drawing"
+    },
+    "native.clvom.mask": {
+      "pair": [
+        46,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvom.mask"
+    },
+    "native.clvom.maskAdd": {
+      "pair": [
+        45,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvom.maskAdd"
+    },
+    "native.clvom.maskDrop": {
+      "pair": [
+        45,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvom.maskDrop"
+    },
+    "native.clvtnm.drawing": {
+      "pair": [
+        25,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvtnm.drawing"
+    },
+    "native.clvtnm.mask": {
+      "pair": [
+        25,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvtnm.mask"
+    },
+    "native.clvtnm.maskAdd": {
+      "pair": [
+        25,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvtnm.maskAdd"
+    },
+    "native.clvtnm.maskDrop": {
+      "pair": [
+        25,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#clvtnm.maskDrop"
+    },
+    "native.cmm1.drawing": {
+      "pair": [
+        62,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm1.drawing"
+    },
+    "native.cmm1.fill": {
+      "pair": [
+        36,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm1.fill"
+    },
+    "native.cmm1.mask": {
+      "pair": [
+        36,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm1.mask"
+    },
+    "native.cmm1.maskAdd": {
+      "pair": [
+        62,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm1.maskAdd"
+    },
+    "native.cmm1.maskDrop": {
+      "pair": [
+        62,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm1.maskDrop"
+    },
+    "native.cmm1.waffleDrop": {
+      "pair": [
+        62,
+        24
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm1.waffleDrop"
+    },
+    "native.cmm2.drawing": {
+      "pair": [
+        105,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm2.drawing"
+    },
+    "native.cmm2.fill": {
+      "pair": [
+        41,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm2.fill"
+    },
+    "native.cmm2.mask": {
+      "pair": [
+        41,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm2.mask"
+    },
+    "native.cmm2.maskAdd": {
+      "pair": [
+        105,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm2.maskAdd"
+    },
+    "native.cmm2.maskDrop": {
+      "pair": [
+        105,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm2.maskDrop"
+    },
+    "native.cmm2.waffleDrop": {
+      "pair": [
+        105,
+        52
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm2.waffleDrop"
+    },
+    "native.cmm3.drawing": {
+      "pair": [
+        107,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm3.drawing"
+    },
+    "native.cmm3.fill": {
+      "pair": [
+        34,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm3.fill"
+    },
+    "native.cmm3.mask": {
+      "pair": [
+        34,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm3.mask"
+    },
+    "native.cmm3.maskAdd": {
+      "pair": [
+        107,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm3.maskAdd"
+    },
+    "native.cmm3.maskDrop": {
+      "pair": [
+        107,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm3.maskDrop"
+    },
+    "native.cmm3.waffleDrop": {
+      "pair": [
+        107,
+        24
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm3.waffleDrop"
+    },
+    "native.cmm4.fill": {
+      "pair": [
+        51,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm4.fill"
+    },
+    "native.cmm4.mask": {
+      "pair": [
+        51,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm4.mask"
+    },
+    "native.cmm4.maskAdd": {
+      "pair": [
+        112,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm4.maskAdd"
+    },
+    "native.cmm4.maskDrop": {
+      "pair": [
+        112,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm4.maskDrop"
+    },
+    "native.cmm4.waffleDrop": {
+      "pair": [
+        112,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm4.waffleDrop"
+    },
+    "native.cmm5.fill": {
+      "pair": [
+        59,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm5.fill"
+    },
+    "native.cmm5.mask": {
+      "pair": [
+        59,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm5.mask"
+    },
+    "native.cmm5.waffleDrop": {
+      "pair": [
+        117,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cmm5.waffleDrop"
+    },
+    "native.cncm.drawing": {
+      "pair": [
+        96,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cncm.drawing"
+    },
+    "native.cncm.mask": {
+      "pair": [
+        17,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cncm.mask"
+    },
+    "native.cnpc.drawing": {
+      "pair": [
+        44,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnpc.drawing"
+    },
+    "native.cnpc.mask": {
+      "pair": [
+        49,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnpc.mask"
+    },
+    "native.cnpc.maskAdd": {
+      "pair": [
+        44,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnpc.maskAdd"
+    },
+    "native.cnpc.maskDrop": {
+      "pair": [
+        44,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnpc.maskDrop"
+    },
+    "native.cnsdm.drawing": {
+      "pair": [
+        29,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnsdm.drawing"
+    },
+    "native.cnsdm.mask": {
+      "pair": [
+        30,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnsdm.mask"
+    },
+    "native.cnsdm.maskAdd": {
+      "pair": [
+        29,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnsdm.maskAdd"
+    },
+    "native.cnsdm.maskDrop": {
+      "pair": [
+        29,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnsdm.maskDrop"
+    },
+    "native.cnsm.mask": {
+      "pair": [
+        22,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnsm.mask"
+    },
+    "native.cntm.drawing": {
+      "pair": [
+        26,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cntm.drawing"
+    },
+    "native.cntm.mask": {
+      "pair": [
+        27,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cntm.mask"
+    },
+    "native.cntm.maskAdd": {
+      "pair": [
+        26,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cntm.maskAdd"
+    },
+    "native.cntm.maskDrop": {
+      "pair": [
+        26,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cntm.maskDrop"
+    },
+    "native.cnwm.drawing": {
+      "pair": [
+        109,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnwm.drawing"
+    },
+    "native.cnwm.mask": {
+      "pair": [
+        21,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnwm.mask"
+    },
+    "native.cnwm.maskAdd": {
+      "pair": [
+        109,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnwm.maskAdd"
+    },
+    "native.cnwm.maskDrop": {
+      "pair": [
+        109,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cnwm.maskDrop"
+    },
+    "native.conom.drawing": {
+      "pair": [
+        87,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#conom.drawing"
+    },
+    "native.conom.mask": {
+      "pair": [
+        88,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#conom.mask"
+    },
+    "native.conom.maskAdd": {
+      "pair": [
+        87,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#conom.maskAdd"
+    },
+    "native.conom.maskDrop": {
+      "pair": [
+        87,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#conom.maskDrop"
+    },
+    "native.cp1m.drawing": {
+      "pair": [
+        33,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cp1m.drawing"
+    },
+    "native.cp1m.fill": {
+      "pair": [
+        28,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cp1m.fill"
+    },
+    "native.cp1m.mask": {
+      "pair": [
+        28,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cp1m.mask"
+    },
+    "native.cp1m.maskAdd": {
+      "pair": [
+        33,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cp1m.maskAdd"
+    },
+    "native.cp1m.maskDrop": {
+      "pair": [
+        33,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cp1m.maskDrop"
+    },
+    "native.cp1m.waffleDrop": {
+      "pair": [
+        33,
+        24
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cp1m.waffleDrop"
+    },
+    "native.cpbo.mask": {
+      "pair": [
+        99,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpbo.mask"
+    },
+    "native.cpdm.drawing": {
+      "pair": [
+        104,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpdm.drawing"
+    },
+    "native.cpdm.mask": {
+      "pair": [
+        37,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpdm.mask"
+    },
+    "native.cpdm.maskAdd": {
+      "pair": [
+        104,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpdm.maskAdd"
+    },
+    "native.cpdm.maskDrop": {
+      "pair": [
+        104,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpdm.maskDrop"
+    },
+    "native.cpmm.drawing": {
+      "pair": [
+        91,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpmm.drawing"
+    },
+    "native.cpmm2.mask": {
+      "pair": [
+        94,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpmm2.mask"
+    },
+    "native.cpsdm.drawing": {
+      "pair": [
+        31,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpsdm.drawing"
+    },
+    "native.cpsdm.mask": {
+      "pair": [
+        32,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpsdm.mask"
+    },
+    "native.cpsdm.maskAdd": {
+      "pair": [
+        31,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpsdm.maskAdd"
+    },
+    "native.cpsdm.maskDrop": {
+      "pair": [
+        31,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cpsdm.maskDrop"
+    },
+    "native.crpm.drawing": {
+      "pair": [
+        53,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#crpm.drawing"
+    },
+    "native.crpm.mask": {
+      "pair": [
+        96,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#crpm.mask"
+    },
+    "native.crpm.maskAdd": {
+      "pair": [
+        53,
+        43
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#crpm.maskAdd"
+    },
+    "native.crpm.maskDrop": {
+      "pair": [
+        53,
+        42
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#crpm.maskDrop"
+    },
+    "native.ctunm.drawing": {
+      "pair": [
+        96,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ctunm.drawing"
+    },
+    "native.ctunm.mask": {
+      "pair": [
+        20,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ctunm.mask"
+    },
+    "native.ctunm.maskAdd": {
+      "pair": [
+        96,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ctunm.maskAdd"
+    },
+    "native.ctunm.maskDrop": {
+      "pair": [
+        96,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ctunm.maskDrop"
+    },
+    "native.cubm.mask": {
+      "pair": [
+        100,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cubm.mask"
+    },
+    "native.cviam.drawing": {
+      "pair": [
+        105,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam.drawing"
+    },
+    "native.cviam.mask": {
+      "pair": [
+        40,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam.mask"
+    },
+    "native.cviam.maskAdd": {
+      "pair": [
+        105,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam.maskAdd"
+    },
+    "native.cviam.maskDrop": {
+      "pair": [
+        105,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam.maskDrop"
+    },
+    "native.cviam2.drawing": {
+      "pair": [
+        108,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam2.drawing"
+    },
+    "native.cviam2.mask": {
+      "pair": [
+        44,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam2.mask"
+    },
+    "native.cviam2.maskAdd": {
+      "pair": [
+        108,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam2.maskAdd"
+    },
+    "native.cviam2.maskDrop": {
+      "pair": [
+        108,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam2.maskDrop"
+    },
+    "native.cviam3.drawing": {
+      "pair": [
+        112,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam3.drawing"
+    },
+    "native.cviam3.mask": {
+      "pair": [
+        50,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam3.mask"
+    },
+    "native.cviam3.maskAdd": {
+      "pair": [
+        112,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam3.maskAdd"
+    },
+    "native.cviam3.maskDrop": {
+      "pair": [
+        112,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam3.maskDrop"
+    },
+    "native.cviam4.drawing": {
+      "pair": [
+        117,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam4.drawing"
+    },
+    "native.cviam4.mask": {
+      "pair": [
+        58,
+        0
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam4.mask"
+    },
+    "native.cviam4.maskAdd": {
+      "pair": [
+        117,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam4.maskAdd"
+    },
+    "native.cviam4.maskDrop": {
+      "pair": [
+        117,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#cviam4.maskDrop"
+    },
+    "native.diff.boundary": {
+      "pair": [
+        65,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.boundary"
+    },
+    "native.diff.cut": {
+      "pair": [
+        65,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.cut"
+    },
+    "native.diff.drawing": {
+      "pair": [
+        65,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.drawing"
+    },
+    "native.diff.hv": {
+      "pair": [
+        65,
+        8
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.hv"
+    },
+    "native.diff.label": {
+      "pair": [
+        65,
+        6
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.label"
+    },
+    "native.diff.net": {
+      "pair": [
+        65,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.net"
+    },
+    "native.diff.pin": {
+      "pair": [
+        65,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.pin"
+    },
+    "native.diff.res": {
+      "pair": [
+        65,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.res"
+    },
+    "native.dnwell.drawing": {
+      "pair": [
+        64,
+        18
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#dnwell.drawing"
+    },
+    "native.fom.dummy": {
+      "pair": [
+        22,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#fom.dummy"
+    },
+    "native.hvi.drawing": {
+      "pair": [
+        75,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#hvi.drawing"
+    },
+    "native.hvntm.drawing": {
+      "pair": [
+        125,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#hvntm.drawing"
+    },
+    "native.hvtp.drawing": {
+      "pair": [
+        78,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#hvtp.drawing"
+    },
+    "native.hvtr.drawing": {
+      "pair": [
+        18,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#hvtr.drawing"
+    },
+    "native.inductor.drawing": {
+      "pair": [
+        82,
+        24
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#inductor.drawing"
+    },
+    "native.inductor.label": {
+      "pair": [
+        82,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#inductor.label"
+    },
+    "native.inductor.term1": {
+      "pair": [
+        82,
+        26
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#inductor.term1"
+    },
+    "native.inductor.term2": {
+      "pair": [
+        82,
+        27
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#inductor.term2"
+    },
+    "native.inductor.term3": {
+      "pair": [
+        82,
+        28
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#inductor.term3"
+    },
+    "native.ldntm.drawing": {
+      "pair": [
+        11,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ldntm.drawing"
+    },
+    "native.li1.blockage": {
+      "pair": [
+        67,
+        10
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.blockage"
+    },
+    "native.li1.boundary": {
+      "pair": [
+        67,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.boundary"
+    },
+    "native.li1.cut": {
+      "pair": [
+        67,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.cut"
+    },
+    "native.li1.drawing": {
+      "pair": [
+        67,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.drawing"
+    },
+    "native.li1.label": {
+      "pair": [
+        67,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.label"
+    },
+    "native.li1.net": {
+      "pair": [
+        67,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.net"
+    },
+    "native.li1.pin": {
+      "pair": [
+        67,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.pin"
+    },
+    "native.li1.probe": {
+      "pair": [
+        67,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.probe"
+    },
+    "native.li1.res": {
+      "pair": [
+        67,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.res"
+    },
+    "native.li1.short": {
+      "pair": [
+        67,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.short"
+    },
+    "native.licon1.boundary": {
+      "pair": [
+        66,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#licon1.boundary"
+    },
+    "native.licon1.drawing": {
+      "pair": [
+        66,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#licon1.drawing"
+    },
+    "native.licon1.net": {
+      "pair": [
+        66,
+        41
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#licon1.net"
+    },
+    "native.licon1.pin": {
+      "pair": [
+        66,
+        58
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#licon1.pin"
+    },
+    "native.lvtn.drawing": {
+      "pair": [
+        125,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#lvtn.drawing"
+    },
+    "native.mcon.boundary": {
+      "pair": [
+        67,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#mcon.boundary"
+    },
+    "native.mcon.drawing": {
+      "pair": [
+        67,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#mcon.drawing"
+    },
+    "native.mcon.net": {
+      "pair": [
+        67,
+        41
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#mcon.net"
+    },
+    "native.mcon.pin": {
+      "pair": [
+        67,
+        48
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#mcon.pin"
+    },
+    "native.met1.blockage": {
+      "pair": [
+        68,
+        10
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.blockage"
+    },
+    "native.met1.boundary": {
+      "pair": [
+        68,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.boundary"
+    },
+    "native.met1.cut": {
+      "pair": [
+        68,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.cut"
+    },
+    "native.met1.drawing": {
+      "pair": [
+        68,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.drawing"
+    },
+    "native.met1.label": {
+      "pair": [
+        68,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.label"
+    },
+    "native.met1.net": {
+      "pair": [
+        68,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.net"
+    },
+    "native.met1.option1": {
+      "pair": [
+        68,
+        32
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option1"
+    },
+    "native.met1.option2": {
+      "pair": [
+        68,
+        33
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option2"
+    },
+    "native.met1.option3": {
+      "pair": [
+        68,
+        34
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option3"
+    },
+    "native.met1.option4": {
+      "pair": [
+        68,
+        35
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option4"
+    },
+    "native.met1.option5": {
+      "pair": [
+        68,
+        36
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option5"
+    },
+    "native.met1.option6": {
+      "pair": [
+        68,
+        37
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option6"
+    },
+    "native.met1.option7": {
+      "pair": [
+        68,
+        38
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option7"
+    },
+    "native.met1.option8": {
+      "pair": [
+        68,
+        39
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.option8"
+    },
+    "native.met1.pin": {
+      "pair": [
+        68,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.pin"
+    },
+    "native.met1.probe": {
+      "pair": [
+        68,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.probe"
+    },
+    "native.met1.psa1": {
+      "pair": [
+        68,
+        88
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.psa1"
+    },
+    "native.met1.psa2": {
+      "pair": [
+        68,
+        89
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.psa2"
+    },
+    "native.met1.psa3": {
+      "pair": [
+        68,
+        90
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.psa3"
+    },
+    "native.met1.psa4": {
+      "pair": [
+        68,
+        91
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.psa4"
+    },
+    "native.met1.psa5": {
+      "pair": [
+        68,
+        92
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.psa5"
+    },
+    "native.met1.psa6": {
+      "pair": [
+        68,
+        93
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.psa6"
+    },
+    "native.met1.res": {
+      "pair": [
+        68,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.res"
+    },
+    "native.met1.short": {
+      "pair": [
+        68,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.short"
+    },
+    "native.met2.blockage": {
+      "pair": [
+        69,
+        10
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.blockage"
+    },
+    "native.met2.boundary": {
+      "pair": [
+        69,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.boundary"
+    },
+    "native.met2.cut": {
+      "pair": [
+        69,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.cut"
+    },
+    "native.met2.drawing": {
+      "pair": [
+        69,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.drawing"
+    },
+    "native.met2.label": {
+      "pair": [
+        69,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.label"
+    },
+    "native.met2.net": {
+      "pair": [
+        69,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.net"
+    },
+    "native.met2.option1": {
+      "pair": [
+        69,
+        32
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option1"
+    },
+    "native.met2.option2": {
+      "pair": [
+        69,
+        33
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option2"
+    },
+    "native.met2.option3": {
+      "pair": [
+        69,
+        34
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option3"
+    },
+    "native.met2.option4": {
+      "pair": [
+        69,
+        35
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option4"
+    },
+    "native.met2.option5": {
+      "pair": [
+        69,
+        36
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option5"
+    },
+    "native.met2.option6": {
+      "pair": [
+        69,
+        37
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option6"
+    },
+    "native.met2.option7": {
+      "pair": [
+        69,
+        38
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option7"
+    },
+    "native.met2.option8": {
+      "pair": [
+        69,
+        39
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.option8"
+    },
+    "native.met2.pin": {
+      "pair": [
+        69,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.pin"
+    },
+    "native.met2.probe": {
+      "pair": [
+        69,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.probe"
+    },
+    "native.met2.psa1": {
+      "pair": [
+        69,
+        88
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.psa1"
+    },
+    "native.met2.psa2": {
+      "pair": [
+        69,
+        89
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.psa2"
+    },
+    "native.met2.psa3": {
+      "pair": [
+        69,
+        90
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.psa3"
+    },
+    "native.met2.psa4": {
+      "pair": [
+        69,
+        91
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.psa4"
+    },
+    "native.met2.psa5": {
+      "pair": [
+        69,
+        92
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.psa5"
+    },
+    "native.met2.psa6": {
+      "pair": [
+        69,
+        93
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.psa6"
+    },
+    "native.met2.res": {
+      "pair": [
+        69,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.res"
+    },
+    "native.met2.short": {
+      "pair": [
+        69,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.short"
+    },
+    "native.met3.blockage": {
+      "pair": [
+        70,
+        10
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.blockage"
+    },
+    "native.met3.boundary": {
+      "pair": [
+        70,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.boundary"
+    },
+    "native.met3.cut": {
+      "pair": [
+        70,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.cut"
+    },
+    "native.met3.drawing": {
+      "pair": [
+        70,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.drawing"
+    },
+    "native.met3.fuse": {
+      "pair": [
+        70,
+        17
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.fuse"
+    },
+    "native.met3.label": {
+      "pair": [
+        70,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.label"
+    },
+    "native.met3.net": {
+      "pair": [
+        70,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.net"
+    },
+    "native.met3.option1": {
+      "pair": [
+        70,
+        32
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option1"
+    },
+    "native.met3.option2": {
+      "pair": [
+        70,
+        33
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option2"
+    },
+    "native.met3.option3": {
+      "pair": [
+        70,
+        34
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option3"
+    },
+    "native.met3.option4": {
+      "pair": [
+        70,
+        35
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option4"
+    },
+    "native.met3.option5": {
+      "pair": [
+        70,
+        36
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option5"
+    },
+    "native.met3.option6": {
+      "pair": [
+        70,
+        37
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option6"
+    },
+    "native.met3.option7": {
+      "pair": [
+        70,
+        38
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option7"
+    },
+    "native.met3.option8": {
+      "pair": [
+        70,
+        39
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.option8"
+    },
+    "native.met3.pin": {
+      "pair": [
+        70,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.pin"
+    },
+    "native.met3.probe": {
+      "pair": [
+        70,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.probe"
+    },
+    "native.met3.psa1": {
+      "pair": [
+        70,
+        88
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.psa1"
+    },
+    "native.met3.psa2": {
+      "pair": [
+        70,
+        89
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.psa2"
+    },
+    "native.met3.psa3": {
+      "pair": [
+        70,
+        90
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.psa3"
+    },
+    "native.met3.psa4": {
+      "pair": [
+        70,
+        91
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.psa4"
+    },
+    "native.met3.psa5": {
+      "pair": [
+        70,
+        92
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.psa5"
+    },
+    "native.met3.psa6": {
+      "pair": [
+        70,
+        93
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.psa6"
+    },
+    "native.met3.res": {
+      "pair": [
+        70,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.res"
+    },
+    "native.met3.short": {
+      "pair": [
+        70,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.short"
+    },
+    "native.met4.blockage": {
+      "pair": [
+        71,
+        10
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.blockage"
+    },
+    "native.met4.boundary": {
+      "pair": [
+        71,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.boundary"
+    },
+    "native.met4.cut": {
+      "pair": [
+        71,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.cut"
+    },
+    "native.met4.drawing": {
+      "pair": [
+        71,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.drawing"
+    },
+    "native.met4.fuse": {
+      "pair": [
+        71,
+        17
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.fuse"
+    },
+    "native.met4.label": {
+      "pair": [
+        71,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.label"
+    },
+    "native.met4.net": {
+      "pair": [
+        71,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.net"
+    },
+    "native.met4.option1": {
+      "pair": [
+        71,
+        32
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option1"
+    },
+    "native.met4.option2": {
+      "pair": [
+        71,
+        33
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option2"
+    },
+    "native.met4.option3": {
+      "pair": [
+        71,
+        34
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option3"
+    },
+    "native.met4.option4": {
+      "pair": [
+        71,
+        35
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option4"
+    },
+    "native.met4.option5": {
+      "pair": [
+        71,
+        36
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option5"
+    },
+    "native.met4.option6": {
+      "pair": [
+        71,
+        37
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option6"
+    },
+    "native.met4.option7": {
+      "pair": [
+        71,
+        38
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option7"
+    },
+    "native.met4.option8": {
+      "pair": [
+        71,
+        39
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.option8"
+    },
+    "native.met4.pin": {
+      "pair": [
+        71,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.pin"
+    },
+    "native.met4.probe": {
+      "pair": [
+        71,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.probe"
+    },
+    "native.met4.psa1": {
+      "pair": [
+        71,
+        88
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.psa1"
+    },
+    "native.met4.psa2": {
+      "pair": [
+        71,
+        89
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.psa2"
+    },
+    "native.met4.psa3": {
+      "pair": [
+        71,
+        90
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.psa3"
+    },
+    "native.met4.psa4": {
+      "pair": [
+        71,
+        91
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.psa4"
+    },
+    "native.met4.psa5": {
+      "pair": [
+        71,
+        92
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.psa5"
+    },
+    "native.met4.psa6": {
+      "pair": [
+        71,
+        93
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.psa6"
+    },
+    "native.met4.res": {
+      "pair": [
+        71,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.res"
+    },
+    "native.met4.short": {
+      "pair": [
+        71,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.short"
+    },
+    "native.met5.blockage": {
+      "pair": [
+        72,
+        10
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.blockage"
+    },
+    "native.met5.boundary": {
+      "pair": [
+        72,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.boundary"
+    },
+    "native.met5.cut": {
+      "pair": [
+        72,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.cut"
+    },
+    "native.met5.drawing": {
+      "pair": [
+        72,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.drawing"
+    },
+    "native.met5.fuse": {
+      "pair": [
+        72,
+        17
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.fuse"
+    },
+    "native.met5.label": {
+      "pair": [
+        72,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.label"
+    },
+    "native.met5.net": {
+      "pair": [
+        72,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.net"
+    },
+    "native.met5.option1": {
+      "pair": [
+        72,
+        32
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option1"
+    },
+    "native.met5.option2": {
+      "pair": [
+        72,
+        33
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option2"
+    },
+    "native.met5.option3": {
+      "pair": [
+        72,
+        34
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option3"
+    },
+    "native.met5.option4": {
+      "pair": [
+        72,
+        35
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option4"
+    },
+    "native.met5.option5": {
+      "pair": [
+        72,
+        36
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option5"
+    },
+    "native.met5.option6": {
+      "pair": [
+        72,
+        37
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option6"
+    },
+    "native.met5.option7": {
+      "pair": [
+        72,
+        38
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option7"
+    },
+    "native.met5.option8": {
+      "pair": [
+        72,
+        39
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.option8"
+    },
+    "native.met5.pin": {
+      "pair": [
+        72,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.pin"
+    },
+    "native.met5.probe": {
+      "pair": [
+        72,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.probe"
+    },
+    "native.met5.psa1": {
+      "pair": [
+        72,
+        88
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.psa1"
+    },
+    "native.met5.psa2": {
+      "pair": [
+        72,
+        89
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.psa2"
+    },
+    "native.met5.psa3": {
+      "pair": [
+        72,
+        90
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.psa3"
+    },
+    "native.met5.psa4": {
+      "pair": [
+        72,
+        91
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.psa4"
+    },
+    "native.met5.psa5": {
+      "pair": [
+        72,
+        92
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.psa5"
+    },
+    "native.met5.psa6": {
+      "pair": [
+        72,
+        93
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.psa6"
+    },
+    "native.met5.res": {
+      "pair": [
+        72,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.res"
+    },
+    "native.met5.short": {
+      "pair": [
+        72,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.short"
+    },
+    "native.ncm.drawing": {
+      "pair": [
+        92,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ncm.drawing"
+    },
+    "native.npc.drawing": {
+      "pair": [
+        95,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#npc.drawing"
+    },
+    "native.npn.drawing": {
+      "pair": [
+        82,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#npn.drawing"
+    },
+    "native.npn.label": {
+      "pair": [
+        82,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#npn.label"
+    },
+    "native.nsdm.drawing": {
+      "pair": [
+        93,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nsdm.drawing"
+    },
+    "native.nsm.drawing": {
+      "pair": [
+        61,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nsm.drawing"
+    },
+    "native.nwell.drawing": {
+      "pair": [
+        64,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nwell.drawing"
+    },
+    "native.nwell.label": {
+      "pair": [
+        64,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nwell.label"
+    },
+    "native.nwell.net": {
+      "pair": [
+        84,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nwell.net"
+    },
+    "native.nwell.pin": {
+      "pair": [
+        64,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nwell.pin"
+    },
+    "native.overlap.boundary": {
+      "pair": [
+        90,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#overlap.boundary"
+    },
+    "native.overlap.drawing": {
+      "pair": [
+        90,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#overlap.drawing"
+    },
+    "native.pad.drawing": {
+      "pair": [
+        76,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pad.drawing"
+    },
+    "native.pad.label": {
+      "pair": [
+        76,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pad.label"
+    },
+    "native.pad.pin": {
+      "pair": [
+        76,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pad.pin"
+    },
+    "native.padCenter.drawing": {
+      "pair": [
+        81,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#padCenter.drawing"
+    },
+    "native.pmm.drawing": {
+      "pair": [
+        85,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pmm.drawing"
+    },
+    "native.pmm2.drawing": {
+      "pair": [
+        77,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pmm2.drawing"
+    },
+    "native.pnp.drawing": {
+      "pair": [
+        82,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pnp.drawing"
+    },
+    "native.pnp.label": {
+      "pair": [
+        82,
+        59
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pnp.label"
+    },
+    "native.poly.boundary": {
+      "pair": [
+        66,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.boundary"
+    },
+    "native.poly.cut": {
+      "pair": [
+        66,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.cut"
+    },
+    "native.poly.drawing": {
+      "pair": [
+        66,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.drawing"
+    },
+    "native.poly.gate": {
+      "pair": [
+        66,
+        9
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.gate"
+    },
+    "native.poly.label": {
+      "pair": [
+        66,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.label"
+    },
+    "native.poly.model": {
+      "pair": [
+        66,
+        83
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.model"
+    },
+    "native.poly.net": {
+      "pair": [
+        66,
+        23
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.net"
+    },
+    "native.poly.pin": {
+      "pair": [
+        66,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.pin"
+    },
+    "native.poly.probe": {
+      "pair": [
+        66,
+        25
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.probe"
+    },
+    "native.poly.res": {
+      "pair": [
+        66,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.res"
+    },
+    "native.poly.short": {
+      "pair": [
+        66,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.short"
+    },
+    "native.prBoundary.boundary": {
+      "pair": [
+        235,
+        4
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#prBoundary.boundary"
+    },
+    "native.prune.drawing": {
+      "pair": [
+        84,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#prune.drawing"
+    },
+    "native.psdm.drawing": {
+      "pair": [
+        94,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#psdm.drawing"
+    },
+    "native.pwell.cut": {
+      "pair": [
+        64,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pwell.cut"
+    },
+    "native.pwell.drawing": {
+      "pair": [
+        64,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pwell.drawing"
+    },
+    "native.pwell.label": {
+      "pair": [
+        64,
+        59
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pwell.label"
+    },
+    "native.pwell.pin": {
+      "pair": [
+        122,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pwell.pin"
+    },
+    "native.pwell.res": {
+      "pair": [
+        64,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pwell.res"
+    },
+    "native.pwelliso.label": {
+      "pair": [
+        44,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pwelliso.label"
+    },
+    "native.pwelliso.pin": {
+      "pair": [
+        44,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#pwelliso.pin"
+    },
+    "native.r1c.drawing": {
+      "pair": [
+        201,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#r1c.drawing"
+    },
+    "native.rdl.cut": {
+      "pair": [
+        74,
+        14
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.cut"
+    },
+    "native.rdl.drawing": {
+      "pair": [
+        74,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.drawing"
+    },
+    "native.rdl.label": {
+      "pair": [
+        74,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.label"
+    },
+    "native.rdl.option1": {
+      "pair": [
+        89,
+        32
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option1"
+    },
+    "native.rdl.option2": {
+      "pair": [
+        89,
+        33
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option2"
+    },
+    "native.rdl.option3": {
+      "pair": [
+        89,
+        34
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option3"
+    },
+    "native.rdl.option4": {
+      "pair": [
+        89,
+        35
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option4"
+    },
+    "native.rdl.option5": {
+      "pair": [
+        89,
+        36
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option5"
+    },
+    "native.rdl.option6": {
+      "pair": [
+        89,
+        37
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option6"
+    },
+    "native.rdl.option7": {
+      "pair": [
+        89,
+        38
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option7"
+    },
+    "native.rdl.option8": {
+      "pair": [
+        89,
+        39
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.option8"
+    },
+    "native.rdl.pin": {
+      "pair": [
+        74,
+        16
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.pin"
+    },
+    "native.rdl.psa1": {
+      "pair": [
+        74,
+        88
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.psa1"
+    },
+    "native.rdl.psa2": {
+      "pair": [
+        74,
+        89
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.psa2"
+    },
+    "native.rdl.psa3": {
+      "pair": [
+        74,
+        90
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.psa3"
+    },
+    "native.rdl.psa4": {
+      "pair": [
+        74,
+        91
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.psa4"
+    },
+    "native.rdl.psa5": {
+      "pair": [
+        74,
+        92
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.psa5"
+    },
+    "native.rdl.psa6": {
+      "pair": [
+        74,
+        93
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.psa6"
+    },
+    "native.rdl.res": {
+      "pair": [
+        74,
+        13
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.res"
+    },
+    "native.rdl.short": {
+      "pair": [
+        74,
+        15
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rdl.short"
+    },
+    "native.rpm.drawing": {
+      "pair": [
+        86,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#rpm.drawing"
+    },
+    "native.tap.boundary": {
+      "pair": [
+        65,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#tap.boundary"
+    },
+    "native.tap.drawing": {
+      "pair": [
+        65,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#tap.drawing"
+    },
+    "native.tap.label": {
+      "pair": [
+        65,
+        5
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#tap.label"
+    },
+    "native.tap.net": {
+      "pair": [
+        65,
+        41
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#tap.net"
+    },
+    "native.tap.pin": {
+      "pair": [
+        65,
+        48
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#tap.pin"
+    },
+    "native.target.drawing": {
+      "pair": [
+        76,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#target.drawing"
+    },
+    "native.text.drawing": {
+      "pair": [
+        83,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#text.drawing"
+    },
+    "native.tunm.drawing": {
+      "pair": [
+        80,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#tunm.drawing"
+    },
+    "native.ubm.drawing": {
+      "pair": [
+        127,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#ubm.drawing"
+    },
+    "native.urpm": {
+      "pair": [
+        79,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#urpm"
+    },
+    "native.v20.drawing": {
+      "pair": [
+        74,
+        22
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#v20.drawing"
+    },
+    "native.vhvi.drawing": {
+      "pair": [
+        74,
+        21
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#vhvi.drawing"
+    },
+    "native.via.boundary": {
+      "pair": [
+        68,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via.boundary"
+    },
+    "native.via.drawing": {
+      "pair": [
+        68,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via.drawing"
+    },
+    "native.via.net": {
+      "pair": [
+        68,
+        41
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via.net"
+    },
+    "native.via.pin": {
+      "pair": [
+        68,
+        58
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via.pin"
+    },
+    "native.via2.boundary": {
+      "pair": [
+        69,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via2.boundary"
+    },
+    "native.via2.drawing": {
+      "pair": [
+        69,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via2.drawing"
+    },
+    "native.via2.net": {
+      "pair": [
+        69,
+        41
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via2.net"
+    },
+    "native.via2.pin": {
+      "pair": [
+        69,
+        58
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via2.pin"
+    },
+    "native.via3.boundary": {
+      "pair": [
+        70,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via3.boundary"
+    },
+    "native.via3.drawing": {
+      "pair": [
+        70,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via3.drawing"
+    },
+    "native.via3.net": {
+      "pair": [
+        70,
+        41
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via3.net"
+    },
+    "native.via3.pin": {
+      "pair": [
+        70,
+        48
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via3.pin"
+    },
+    "native.via4.boundary": {
+      "pair": [
+        71,
+        60
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via4.boundary"
+    },
+    "native.via4.drawing": {
+      "pair": [
+        71,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via4.drawing"
+    },
+    "native.via4.net": {
+      "pair": [
+        71,
+        41
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via4.net"
+    },
+    "native.via4.pin": {
+      "pair": [
+        71,
+        48
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via4.pin"
+    },
+    "active": {
+      "pair": [
+        65,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#diff.drawing"
+    },
+    "tap": {
+      "pair": [
+        65,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#tap.drawing"
+    },
+    "poly": {
+      "pair": [
+        66,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#poly.drawing"
+    },
+    "nimplant": {
+      "pair": [
+        93,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nsdm.drawing"
+    },
+    "pimplant": {
+      "pair": [
+        94,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#psdm.drawing"
+    },
+    "nwell": {
+      "pair": [
+        64,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#nwell.drawing"
+    },
+    "contact": {
+      "pair": [
+        66,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#licon1.drawing"
+    },
+    "local": {
+      "pair": [
+        67,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#li1.drawing"
+    },
+    "local_via": {
+      "pair": [
+        67,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#mcon.drawing"
+    },
+    "met1": {
+      "pair": [
+        68,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met1.drawing"
+    },
+    "met2": {
+      "pair": [
+        69,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met2.drawing"
+    },
+    "met3": {
+      "pair": [
+        70,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met3.drawing"
+    },
+    "met4": {
+      "pair": [
+        71,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met4.drawing"
+    },
+    "met5": {
+      "pair": [
+        72,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#met5.drawing"
+    },
+    "via1": {
+      "pair": [
+        68,
+        44
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#via.drawing"
+    },
+    "poly_marker": {
+      "pair": [
+        95,
+        20
+      ],
+      "source": "sky130A/libs.tech/klayout/tech/sky130A.lyp#npc.drawing"
+    }
+  },
+  "rules": {
+    "poly_surround": {
+      "value": 0.08,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:55"
+    },
+    "diff_surround": {
+      "value": 0.06,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:56"
+    },
+    "gate_to_diffcont": {
+      "value": 0.145,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:57"
+    },
+    "gate_to_polycont": {
+      "value": 0.275,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:58"
+    },
+    "gate_extension": {
+      "value": 0.13,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:59"
+    },
+    "diff_extension": {
+      "value": 0.29,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:60"
+    },
+    "contact_size": {
+      "value": 0.17,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:61"
+    },
+    "via_size": {
+      "value": 0.17,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:62"
+    },
+    "metal_surround": {
+      "value": 0.08,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:63"
+    },
+    "sub_surround": {
+      "value": 0.18,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:64"
+    },
+    "diff_spacing": {
+      "value": 0.28,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:65"
+    },
+    "poly_spacing": {
+      "value": 0.21,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:66"
+    },
+    "diff_poly_space": {
+      "value": 0.075,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:67"
+    },
+    "diff_gate_space": {
+      "value": 0.2,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:68"
+    },
+    "metal_spacing": {
+      "value": 0.23,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:69"
+    },
+    "mmetal_spacing": {
+      "value": 0.14,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:70"
+    },
+    "res_to_cont": {
+      "value": 0.2,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:71"
+    },
+    "res_diff_spacing": {
+      "value": 0.2,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tcl:72"
+    },
+    "tap_surround": {
+      "value": 0.12,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4521"
+    },
+    "met1_area": {
+      "value": 0.083,
+      "unit": "um2",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4608"
+    },
+    "poly_width": {
+      "value": 0.15,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4338"
+    },
+    "active_width": {
+      "value": 0.15,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4221"
+    },
+    "met1_width": {
+      "value": 0.14,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4606"
+    },
+    "well_width": {
+      "value": 0.84,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4200"
+    },
+    "well_spacing": {
+      "value": 1.27,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4201"
+    },
+    "well_overlap_p": {
+      "value": 0.18,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4259"
+    },
+    "well_overlap_tap": {
+      "value": 0.18,
+      "unit": "um",
+      "source": "sky130A/libs.tech/magic/sky130A.tech:4255"
+    }
+  },
+  "lef_layers": {
+    "met1": "met1",
+    "met2": "met2",
+    "met3": "met3",
+    "met4": "met4",
+    "met5": "met5"
+  },
+  "platform": "sky130hs"
+}
