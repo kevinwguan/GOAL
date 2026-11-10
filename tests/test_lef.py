@@ -1,9 +1,11 @@
+import re
 from collections import Counter
 from pathlib import Path
-import re
+
 import gdsfactory as gf
 import klayout.db as kdb
 import pytest
+
 from goal.cells import diffpair
 from goal.cells.geometry import port, rect
 from goal.lef import write_abstract
@@ -68,7 +70,7 @@ def test_transformed_access_rectangle(tmp_path, angle, mirror):
     cell, parent = gf.Component(), gf.Component()
     box = (1, 2, 5, 3)
     rect(cell, pdk, "met1", box)
-    original = port(cell, pdk, "P", "net", box)
+    port(cell, pdk, "P", "net", box)
     ref = parent << cell
     ref.dcplx_trans = kdb.DCplxTrans(1, angle, mirror, 11, 13)
     parent.add_port("P", port=ref.ports["P"])
@@ -111,3 +113,25 @@ def test_openroad_read_lef(tmp_path, mode):
     )
     assert proc.returncode == 0, proc.stdout + proc.stderr
     assert not re.search(r"\[(WARNING|ERROR)", proc.stdout + proc.stderr)
+
+
+def test_fine_and_coarse_obstructions_preserve_pin_holes():
+    from goal.lef.obs import obstructions
+
+    pdk = PDK.load("sky130A")
+    cell = gf.Component()
+    rect(cell, pdk, "met1", (0, 0, 10, 1))
+    rect(cell, pdk, "met1", (0, 0, 1, 10))
+    pin = (0, 0, 0.5, 0.5)
+    port(cell, pdk, "P", "net", pin)
+    areas = []
+    for coarse in (False, True):
+        boxes = obstructions(cell, pdk, coarse)["met1"]
+        areas.append(sum((b[2] - b[0]) * (b[3] - b[1]) for b in boxes))
+        for x0, y0, x1, y1 in boxes:
+            assert (
+                max(0, min(x1, pin[2]) - max(x0, pin[0]))
+                * max(0, min(y1, pin[3]) - max(y0, pin[1]))
+                == 0
+            )
+    assert areas == pytest.approx([18.75, 99.75])

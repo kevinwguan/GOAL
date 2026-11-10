@@ -1,10 +1,12 @@
 """Bounded exact path covers, ported from reproduction/placement.py."""
 
 from functools import lru_cache
+
 import networkx as nx
 
 
 def graph(devices: list) -> nx.Graph:
+    """Build a bipartite graph using only MOS drain/source connectivity."""
     g = nx.Graph()
     for d in sorted(devices, key=lambda d: d.name):
         if d.kind not in ("nmos", "pmos"):
@@ -23,6 +25,7 @@ def canonical(path):
 
 
 def cover(g: nx.Graph, exact_limit: int = 20) -> dict:
+    """Return a deterministic vertex-disjoint path cover and certification label."""
     all_paths = []
     methods = []
     for nodes in sorted(nx.connected_components(g), key=lambda x: sorted(x)):

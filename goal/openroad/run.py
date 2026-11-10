@@ -1,9 +1,10 @@
 """Timeout-bounded local OpenROAD execution, ported from route_independent.py."""
 
 import json
-from pathlib import Path
 import subprocess
 import time
+from pathlib import Path
+
 from .locate import Toolchain
 from .metrics import parse_metrics, scrub
 from .tcl import FlowSpec, generate

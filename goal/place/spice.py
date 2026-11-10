@@ -1,8 +1,8 @@
 """SPICE connectivity reader ported from reproduction/placement.py."""
 
-from dataclasses import dataclass
-import shlex
 import re
+import shlex
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
@@ -15,6 +15,7 @@ class Device:
 
 
 def parse_spice(text: str) -> list[Device]:
+    """Parse MOS, resistor and capacitor connectivity, ignoring directives."""
     lines = []
     for raw in text.splitlines():
         line = raw.split("$")[0].strip()
@@ -66,6 +67,7 @@ def parse_spice(text: str) -> list[Device]:
 
 
 def micron(value: str | None, default: float) -> float:
+    """Convert a SPICE SI length literal into micrometres."""
     if value is None:
         return default
     match = re.fullmatch("([\\d.eE+-]+)([a-zA-Z]*)", value)

@@ -1,4 +1,5 @@
 import pytest
+
 from goal.rc import RCNet, effective, parse_spef
 
 

@@ -1,11 +1,11 @@
 """Flat declarative process configuration, ported from reproduction/pdk.py."""
 
-from dataclasses import dataclass
 import json
 import os
-from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
+from dataclasses import dataclass
+from pathlib import Path
 
 
 def layer_inventory(path: Path) -> dict[str, tuple[int, int]]:

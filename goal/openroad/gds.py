@@ -1,8 +1,10 @@
 """DEF → final GDS, using the ORFS def2stream.py merge strategy."""
 
-from pathlib import Path
 import re
+from pathlib import Path
+
 import klayout.db as kdb
+
 from .locate import Toolchain
 
 

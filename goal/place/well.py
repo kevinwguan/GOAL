@@ -1,12 +1,15 @@
 """Well-group tiling ported from reproduction/placement.py."""
 
 import math
+
+from .chains import cover, graph, ordered_devices
 from .spice import micron
-from .chains import graph, cover, ordered_devices
 
 
 def tile(devices: list, pdk, aspect: float = 1.0, name: str = "placed_block") -> tuple:
+    """Preserve graph order within contacted, isolated-finger well groups."""
     import gdsfactory as gf
+
     from goal.cells import mosfet, ring
 
     if not devices:

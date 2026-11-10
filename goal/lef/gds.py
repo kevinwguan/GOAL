@@ -1,6 +1,7 @@
 """Macro-named, origin-normalized GDS geometry."""
 
 from pathlib import Path
+
 import klayout.db as kdb
 
 

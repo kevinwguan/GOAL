@@ -1,8 +1,10 @@
 """Isolated multi-finger MOS devices, ported from reproduction/geometry.py."""
 
 import gdsfactory as gf
+
 from goal.pdk import PDK
-from .geometry import rect, contact, port, MARGIN
+
+from .geometry import MARGIN, contact, port, rect
 from .guardring import ring
 
 
@@ -18,6 +20,7 @@ def mosfet(
     bulk: str = "B",
     name: str | None = None,
 ) -> gf.Component:
+    """Construct isolated, contacted fingers inside a bulk-tapped guard ring."""
     if kind not in ("nmos", "pmos") or fingers < 1:
         raise ValueError("kind or fingers")
     if width < max(

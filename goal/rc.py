@@ -1,8 +1,9 @@
 """Independent SPEF reader and boundary-shorted nodal resistance solver."""
 
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
-import re
+
 import numpy as np
 
 

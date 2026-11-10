@@ -1,12 +1,13 @@
-from pathlib import Path
 import os
+
 import pytest
+
 from goal.cells import diffpair
 from goal.lef import write_abstract
 from goal.lef.verilog import write_wrapper
-from goal.openroad import locate, FlowSpec, run
+from goal.openroad import FlowSpec, locate, run
 from goal.openroad.gds import merge_gds
-from goal.openroad.metrics import scrub, parse_metrics
+from goal.openroad.metrics import parse_metrics, scrub
 from goal.pdk import PDK
 
 
@@ -60,7 +61,7 @@ def test_route_and_final_gds(tmp_path, fallback):
     )
     if fallback:
         # Exercise DEF input with exactly the same verified placement/netlist.
-        first = run(spec, tools, tmp_path / "first")
+        run(spec, tools, tmp_path / "first")
         spec.placed_def = tmp_path / "first/routed.def"
     result = run(spec, tools, tmp_path / "route")
     assert result["drc_violations"] == 0
@@ -80,3 +81,52 @@ def test_route_and_final_gds(tmp_path, fallback):
     assert "goal_pair" in final["macros"]
     with pytest.raises(FileExistsError):
         run(spec, tools, tmp_path / "route")
+
+
+@pytest.mark.openroad
+def test_automatic_two_macro_placement_and_estimated_rc(tmp_path):
+    from dataclasses import replace
+
+    from goal.rc import effective, parse_spef
+
+    pdk = PDK.load("sky130A")
+    try:
+        tools = replace(locate(pdk), rc_rules=None)
+    except FileNotFoundError as error:
+        if os.getenv("OPENROAD"):
+            raise
+        pytest.skip(str(error))
+    meta = write_abstract(
+        diffpair(pdk), pdk, tmp_path, macro_name="goal_pair", tech_lef=tools.tech_lef
+    )
+    nets = sorted(set(meta["pins"].values()))
+    text = "module goal_top(" + ", ".join(nets) + ");\n"
+    text += "".join(f"inout {net};\n" for net in nets)
+    for i in range(2):
+        text += (
+            f"goal_pair pair{i} ("
+            + ", ".join(f".{pin}({net})" for pin, net in meta["pins"].items())
+            + ");\n"
+        )
+    (tmp_path / "top.v").write_text(text + "endmodule\n")
+    spec = FlowSpec(
+        [tmp_path / "goal_pair.lef"],
+        [tmp_path / "top.v"],
+        die=(0, 0, 150, 150),
+        core=(0, 0, 150, 150),
+        auto_place=True,
+    )
+    result = run(spec, tools, tmp_path / "route")
+    assert result["drc_violations"] == 0
+    assert result["parasitics"] == "estimated_global_routing"
+    assert (tmp_path / "route/routed.def").read_text().count("+ FIXED") == 2
+    nets = parse_spef(tmp_path / "route/routed.spef")
+    assert effective([nets["drn_p"]])["resistance_ohm"] > 0
+    merge_gds(
+        tmp_path / "route/routed.def",
+        [tmp_path / "goal_pair.gds"],
+        spec.macro_lefs,
+        tools,
+        spec.top,
+        tmp_path / "route/final.gds",
+    )

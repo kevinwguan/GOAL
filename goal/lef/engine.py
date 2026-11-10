@@ -1,8 +1,9 @@
 """Plain LEF 5.8 abstract emission, refactored from reproduction/lef.py."""
 
-from collections import defaultdict
 import json
+from collections import defaultdict
 from pathlib import Path
+
 from .gds import write_macro_gds
 from .obs import obstructions
 from .ports import port_box

@@ -1,6 +1,7 @@
 import os
-from pathlib import Path
+
 import pytest
+
 from goal.cli import main
 from goal.flow import run_flow
 from goal.openroad import locate

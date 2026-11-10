@@ -1,9 +1,11 @@
 """Guarded pair ported from reproduction/lef.py, independent of LEF emission."""
 
 import gdsfactory as gf
-from goal.pdk import PDK
+
 from goal.lef.ports import port_box
-from .geometry import rect, port
+from goal.pdk import PDK
+
+from .geometry import port, rect
 from .mosfet import mosfet
 
 

@@ -1,10 +1,11 @@
 """Optional full Magic DRC, reporting observed counts without fitting geometry."""
 
 import os
-from pathlib import Path
 import re
 import shutil
 import subprocess
+from pathlib import Path
+
 from .openroad.metrics import scrub
 
 

@@ -1,8 +1,10 @@
 """Re-expose routed IO pads when hardening an OpenROAD-produced DEF/GDS."""
 
-from pathlib import Path
 import re
+from pathlib import Path
+
 import gdsfactory as gf
+
 from goal.cells.geometry import port
 
 

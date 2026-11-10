@@ -1,12 +1,14 @@
 """Grid, rectangles and contact stacks ported from reproduction/geometry.py."""
 
-from goal.pdk import PDK
+import hashlib
 import math
 from pathlib import Path
-import hashlib
+
 import gdsfactory as gf
-from gdsfactory.generic_tech import get_generic_pdk
 import klayout.db as kdb
+from gdsfactory.generic_tech import get_generic_pdk
+
+from goal.pdk import PDK
 
 get_generic_pdk().activate()
 MARGIN = 0.02  # Construction margin, not a process rule.
@@ -14,10 +16,12 @@ GRID = 0.005  # Common output grid, in micrometres.
 
 
 def snap(value: float) -> float:
+    """Round a dimension to the common construction grid."""
     return round(value / GRID) * GRID
 
 
 def rect(c: gf.Component, pdk: PDK, layer: str, box: tuple) -> None:
+    """Paint a positive-area rectangle using a generic process layer."""
     (x0, y0, x1, y1) = map(snap, box)
     if x1 > x0 and y1 > y0:
         c.add_polygon([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], layer=pdk.layer(layer))
@@ -32,6 +36,7 @@ def port(
     layer: str = "met1",
     orientation: float = 90,
 ):
+    """Add an electrical port with transform-aware rectangle and net metadata."""
     (x0, y0, x1, y1) = map(snap, box)
     p = c.add_port(
         name=name,
@@ -53,6 +58,7 @@ def port(
 
 
 def contact(c: gf.Component, pdk: PDK, x: float, y: float, poly: bool = False) -> tuple:
+    """Paint the configured contact stack and return its metal landing box."""
     (x, y) = (snap(x), snap(y))
     cut = pdk.rule("contact_size")
     landing = cut + 2 * pdk.rule("metal_surround") + 2 * MARGIN
@@ -91,6 +97,7 @@ def contact(c: gf.Component, pdk: PDK, x: float, y: float, poly: bool = False) -
 
 
 def write_gds(c: gf.Component, path: str | Path) -> str:
+    """Write geometry without timestamps/metadata and return its SHA-256."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     options = kdb.SaveLayoutOptions()

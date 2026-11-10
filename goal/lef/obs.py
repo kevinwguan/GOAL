@@ -1,6 +1,7 @@
 """Fixed metal minus exposed access rectangles, from reproduction/lef.py."""
 
 import klayout.db as kdb
+
 from .ports import port_box
 
 

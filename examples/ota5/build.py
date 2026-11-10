@@ -4,6 +4,7 @@ import argparse
 import json
 import math
 from pathlib import Path
+
 from goal.lef import write_abstract
 from goal.lef.defports import routed_component
 from goal.lef.verilog import write_wrapper

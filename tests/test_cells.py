@@ -1,12 +1,14 @@
 """Primitive geometry and optional full Magic DRC."""
 
 import os
-from pathlib import Path
 import re
 import shutil
 import subprocess
+from pathlib import Path
+
 import pytest
-from goal.cells import mosfet, diffpair
+
+from goal.cells import diffpair, mosfet
 from goal.cells.geometry import write_gds
 from goal.pdk import PDK
 

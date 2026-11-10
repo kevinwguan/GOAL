@@ -1,10 +1,11 @@
 """Component → abstract → route → SPEF/GDS orchestration."""
 
-from collections import defaultdict
 import json
 import math
-from pathlib import Path
 import runpy
+from collections import defaultdict
+from pathlib import Path
+
 from .cells import diffpair
 from .lef import write_abstract
 from .lef.verilog import connections, write_wrapper
@@ -13,7 +14,6 @@ from .openroad.gds import merge_gds
 from .pdk import PDK
 from .rc import effective, parse_spef
 from .signoff import magic_drc
-
 
 MODES = ("conv", "cap", "cap_split")
 

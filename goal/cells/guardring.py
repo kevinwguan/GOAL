@@ -1,8 +1,10 @@
 """Contacted guard rings, ported from reproduction/geometry.py."""
 
 import gdsfactory as gf
+
 from goal.pdk import PDK
-from .geometry import snap, rect, contact, port, MARGIN
+
+from .geometry import MARGIN, contact, port, rect, snap
 
 
 def ring(c: gf.Component, pdk: PDK, box: tuple, kind: str, alias: str) -> float:

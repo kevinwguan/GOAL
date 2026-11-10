@@ -1,10 +1,12 @@
 """Generate a reusable macro-assembly routing flow."""
 
+import math
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
-import re
-import math
+
 from goal.lef.verilog import identifier
+
 from .locate import Toolchain
 
 
@@ -90,9 +92,13 @@ def generate(spec: FlowSpec, tools: Toolchain, out_dir: Path) -> tuple[str, str]
             + " ".join(map(str, spec.core))
             + "}",
         ]
+        lines.append("make_tracks")
         if spec.auto_place:
             lines.append(
                 "rtl_macro_placer -report_directory " + quote(out / "placement")
+            )
+            lines.append(
+                "foreach inst [[ord::get_db_block] getInsts] { if {[[$inst getMaster] isBlock]} { $inst setPlacementStatus LOCKED } }"
             )
         for name, (x, y) in spec.placements.items():
             lines.append(
@@ -101,15 +107,38 @@ def generate(spec: FlowSpec, tools: Toolchain, out_dir: Path) -> tuple[str, str]
             lines.append(
                 f"[[ord::get_db_block] findInst {identifier(name)}] setPlacementStatus LOCKED"
             )
-        lines.append("make_tracks")
         if spec.io_pins:
             for name, (x, y) in spec.io_pins.items():
                 lines.append(
                     f"place_pin -pin_name {identifier(name)} -layer {identifier(spec.io_layer)} -location {{{x} {y}}} -pin_size {{{io_size} {io_size}}} -placed_status"
                 )
         else:
-            lo, hi = map(identifier, spec.routing_layers)
-            lines += [f"place_pins -hor_layers {lo} -ver_layers {hi}"]
+            directions = []
+            for layer, body in re.findall(
+                r"^LAYER (\S+)\s*$(.*?)^END \1\s*$",
+                tools.tech_lef.read_text(),
+                re.M | re.S,
+            ):
+                direction = re.search(r"DIRECTION\s+(HORIZONTAL|VERTICAL)", body)
+                if direction:
+                    directions.append((layer, direction[1]))
+            names = [layer for layer, _ in directions]
+            lo_index, hi_index = (names.index(layer) for layer in spec.routing_layers)
+            allowed = directions[lo_index : hi_index + 1]
+            horizontal = next(
+                (layer for layer, direction in allowed if direction == "HORIZONTAL"),
+                None,
+            )
+            vertical = next(
+                (layer for layer, direction in allowed if direction == "VERTICAL"), None
+            )
+            if not horizontal or not vertical:
+                raise ValueError(
+                    "Automatic IO placement needs horizontal and vertical routing layers"
+                )
+            lines += [
+                f"place_pins -hor_layers {identifier(horizontal)} -ver_layers {identifier(vertical)}"
+            ]
     lo, hi = map(identifier, spec.routing_layers)
     if spec.placed_def:
         lines.append("make_tracks")

@@ -2,8 +2,9 @@
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
+
 from .cells import diffpair, mosfet
 from .flow import format_table, run_flow
 from .lef import write_abstract

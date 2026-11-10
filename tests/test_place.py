@@ -1,12 +1,10 @@
 import itertools
-import json
 import os
-from pathlib import Path
-import random
-import subprocess
-import sys
+
 import networkx as nx
-from goal.place import Device, graph, cover, parse_spice
+import pytest
+
+from goal.place import Device, cover, graph, parse_spice
 
 
 def brute_force(g):
@@ -74,8 +72,9 @@ def test_large_graph_labels_approximate_fallback():
 
 def test_tiling_rejects_unimplemented_passives():
     import pytest
-    from goal.place import tile
+
     from goal.pdk import PDK
+    from goal.place import tile
 
     with pytest.raises(NotImplementedError, match="passive"):
         tile(parse_spice("R1 a b 1k"), PDK.load("sky130A"))
@@ -90,12 +89,10 @@ def test_parse_spice_continuations_and_duplicates():
         parse_spice("R1 a b 1k\nR1 b c 2k")
 
 
-import pytest
-
-
 @pytest.mark.openroad
 def test_ota_hardened_macro(tmp_path):
     import runpy
+
     from goal.openroad import locate
     from goal.pdk import PDK
 
