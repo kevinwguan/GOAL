@@ -1,7 +1,8 @@
 # Capillary vs. Conventional LEF Routing
 
 Empirical test of LEF pin granularity AND destination granularity on OpenROAD
-routing, using a 4-finger NMOS diff-pair macro on sky130hs. Holds the physical
+routing (Table 3, Fig. 6, Section 4.4, and Eqs. (1)–(3) of the
+paper), using a 4-finger NMOS diff-pair macro on sky130hs. Holds the physical
 footprint, placement, tracks, and TritonRoute version constant; varies only
 the `PIN` stanzas in the LEF and the I/O port count / net membership in the
 DEF.
@@ -81,7 +82,10 @@ gen/generate_macro.py                generator (Python stdlib only) for LEF /
                                      blackbox Verilog / top Verilog / DEF across
                                      all three modes
 openroad/run_comparison.tcl          OpenROAD routing driver, parameterised by $MODE
-run.sh                               wrapper — ./run.sh [conv|cap|cap_split|all]
+run.sh                               routing, post-processing, and table wrapper
+render_post.py                       Fig. 6 post-processing (no OpenROAD needed)
+verify.py                            validate all three modes / emit Table 3
+out/                                 ignored generated figures and table body
 diffpair_{conv,cap,cap_split}.lef    generated macro LEFs (cap and cap_split
                                      LEFs are identical)
 diffpair_{conv,cap,cap_split}_bb.v   generated blackbox Verilog
@@ -89,7 +93,7 @@ top_{conv,cap,cap_split}.v           generated top wrappers (cap shorts finger
                                      pins back to 6 logical nets; cap_split
                                      exposes 19 separate nets)
 placed_{conv,cap,cap_split}.def      generated DEFs with fixed macro + I/O pins
-reports/{conv,cap,cap_split}/        per-mode outputs: openroad.log, stdout.log,
+reports/{conv,cap,cap_split}/        per-mode outputs: stdout.log,
                                      metrics.json, route.guide, routed.def,
                                      parasitics.spef, drc.rpt, route.png
 ```
@@ -97,30 +101,58 @@ reports/{conv,cap,cap_split}/        per-mode outputs: openroad.log, stdout.log,
 The generated artifacts are checked in; re-running the generator is
 only needed when tweaking geometry or port placement.
 
+## Dependencies
+
+- **Routing and raw rendering:** OpenROAD and the sky130hs platform from an
+  OpenROAD-flow-scripts checkout. Set `ORFS_DIR` to that checkout; its default
+  is `./OpenROAD-flow-scripts` beside `run.sh`, which may be a symlink.
+  Alternatively, set `OPENROAD` to the executable and `PLATFORM_DIR` to the
+  sky130hs platform directory containing `lef/`.
+- **Generator and `verify.py`:** Python 3 standard library only.
+- **`render_post.py` (Fig. 6):** Python 3 with numpy, Pillow, and scipy.
+
+The retained `reports/*/stdout.log` files do not print an OpenROAD build
+version. The results were produced with one OpenROAD build; `verify.py`
+will flag numerical drift beyond its recorded tolerances on another build.
+
 ## Running
 
+From this directory:
+
 ```bash
-python3 gen/generate_macro.py   # regenerate LEF/DEF/Verilog (optional)
+python3 -I gen/generate_macro.py  # regenerate LEF/DEF/Verilog (optional)
 ./run.sh                        # run all three modes (routing + SPEF)
 ./run.sh conv                   # single mode
 ./run.sh cap
 ./run.sh cap_split
-./run.sh render                 # re-render reports/*/route.png
-./run.sh latex                  # emit Table 3 body to the paper tree
-./run.sh paper                  # run + render + latex in one go
+./run.sh render                 # re-render raw panels, then post-process Fig. 6
+./run.sh post                   # Fig. 6 from retained PNGs; no OpenROAD
+./run.sh latex                  # emit Table 3 body; no OpenROAD
+./run.sh paper                  # route + render + post-process + latex
 ```
 
 Each route invocation overwrites `reports/${MODE}/`. The `render` step
 uses OpenROAD `gui::save_image` with `QT_QPA_PLATFORM=offscreen` so no
-X display is needed. The `latex` step writes
-`../methodology/new/tables/capillary_comparison_body.tex`, which
-`4_results.tex` then `\input`s into Table 3.
+X display is needed. The `post` step reads the committed raw route PNGs;
+its default light palette produces `capillary_{conv,cap,split}.png` for
+Fig. 6(a–c). The `latex` step writes `capillary_comparison_body.tex`.
+Both steps write to the ignored `out/` directory by default. Set `PAPER_DIR`
+to a writable paper root to write figures to `$PAPER_DIR/figures/` and the
+table body to `$PAPER_DIR/tables/` instead. `FIG_THEME=light|dark|cb` selects
+the post-processing palette. The runner uses isolated Python (`python3 -I`).
+
+For a full re-route with an installed toolchain:
+
+```bash
+ORFS_DIR=./OpenROAD-flow-scripts ./run.sh paper
+# Or: OPENROAD=./tools/openroad PLATFORM_DIR=./platforms/sky130hs ./run.sh paper
+```
 
 ## Verifying the paper's numbers
 
 ```bash
-python3 verify.py           # validate conv/cap values, print 3-mode summary
-python3 verify.py --latex   # emit Table 3 body for \input
+python3 -I verify.py           # validate all three modes, print summary
+python3 -I verify.py --latex   # emit Table 3 body for \input (no validation)
 ```
 
 Parses `reports/{conv,cap,cap_split}/{parasitics.spef,metrics.json,stdout.log}`.
@@ -129,29 +161,15 @@ finger-shorted diffusion node $D$ to the I/O port $P$ via nodal analysis
 (Gaussian elimination on the conductance matrix), not the flawed
 parallel-combination-of-per-finger-paths formula that double-counts the
 shared trunk when present. Compares against the Table 3 values and exits
-0 on match.
-
-## Dependencies
-
-- OpenROAD binary at `~/Vibe/OpenROAD-flow-scripts/tools/install/OpenROAD/bin/openroad`
-  (path hardcoded in `run.sh`).
-- sky130hs platform LEFs under
-  `~/Vibe/OpenROAD-flow-scripts/flow/platforms/sky130hs/lef/`.
-- Python 3 standard library only — no third-party deps.
-
-## Relation to `capillary_ablation`
-
-A later, broader version of the same question lives at
-`~/Vibe/paper/methodology/experiments/capillary_ablation/`: a 16-finger
-synthetic macro on sky130hd with gdsfactory-generated GDS and a larger
-harness. This directory is the smaller, dep-free precursor using a
-diff-pair and hand-written LEFs; use it when iterating on the
-pin-granularity question without pulling in gdsfactory.
+0 on match, 1 on drift beyond the recorded tolerances. Current density and
+Black-equation lifetime ratios are analytical assumptions under finger
+symmetry, not independent current or lifetime measurements. The capacitances
+are extracted values; this check does not fit the fringe model in Eq. (3).
 
 ## Results (current run)
 
 These are the numbers that back Table 3 (`tab:capillary_comparison`) in
-`~/Vibe/paper/methodology/new/4_results.tex`. All values come from:
+Section 4.4. All values come from:
 
 - `reports/*/metrics.json` — router totals (wirelength, vias, DRC).
 - `reports/*/stdout.log` — per-layer wirelength and per-pin warnings
@@ -159,8 +177,9 @@ These are the numbers that back Table 3 (`tab:capillary_comparison`) in
 - `reports/*/parasitics.spef` — per-net capacitance and the RC tree
   used to derive effective net resistance.
 
-All three modes complete with zero DRC violations in a single detail-route
-iteration on sky130hs.
+All three modes finish with zero DRC violations on sky130hs. The retained
+logs show `conv` and `cap` finish at optimization iteration 0; `cap_split`
+requires iteration 1 to clear the initial four violations.
 
 ### Wirelength and vias
 
@@ -192,7 +211,7 @@ the $N$ per-finger ports are treated as externally shorted.
 | drn_p       | net C (fF)    |  3.24 | 4.13 | 13.21     |
 | tail        | net C (fF)    |  2.54 | 5.65 | 28.34     |
 
-`cap` delivers only a modest ~24% R reduction: pin granularity alone
+`cap` delivers an 18–24% R reduction (tail and drain, respectively): pin granularity alone
 lets the router build a Steiner tree with a shared trunk back to the
 single I/O port, and the trunk dominates the series resistance.
 `cap_split` delivers close to the analytical 1/N prediction (4.0× for
@@ -207,25 +226,25 @@ each of the N routes carries I/N in the `cap_split` case; in `conv` and
 | net        | per-finger path R (Ω)                               |
 | ---        | ---                                                 |
 | drn_p      | 40.5, 39.7, 34.3, 32.3                              |
-| drn_n      | 40.5, 39.7, 34.3, 32.3 (symmetric)                  |
+| drn_n      | 32.4, 33.2, 38.6, 43.9                              |
 | tail       | 42.0, 31.9, 36.3, 35.1, 35.2, 35.2, 41.4, 47.7      |
 
 Each path is a simple tree from one finger iterm to one I/O port, so
 per-path R is just the SPEF series sum. Their parallel combination (with
 the diffusion-shorted external-shorted model) gives the 9.1 Ω / 4.7 Ω
-effective R above.
+effective R above for `drn_p` and `tail`; the `drn_n` paths are listed
+separately because the routed paths are not symmetric.
 
 ### Reproducing
 
 ```bash
 ./run.sh           # regenerate reports/{conv,cap,cap_split}/
-python3 verify.py  # print 3-mode summary + per-finger path breakdown
+python3 -I verify.py  # validate all modes + print per-finger path breakdown
 ```
 
 ### Scope
 
-A single 4-finger diff-pair on sky130hs. Numbers are a direct
-attachment to the analytical ratios in
-`~/Vibe/paper/methodology/new/3_methodology.tex`, not a broad
-characterization. For a wider sweep (16 fingers, sky130hd, gdsfactory
-macro), see `~/Vibe/paper/methodology/experiments/capillary_ablation/`.
+A single 4-finger diff-pair on sky130hs, used for the capillary-routing
+characterization in Section 4.4. Table 3 and Fig. 6 compare the three routing
+topologies against the analytical relationships in Eqs. (1)–(3); this is not
+a broad characterization across devices or processes.
