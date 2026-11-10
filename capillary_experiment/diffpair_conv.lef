@@ -1,0 +1,63 @@
+VERSION 5.7 ;
+NOWIREEXTENSIONATPIN ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+MACRO diffpair_nmos_4f
+  CLASS BLOCK ;
+  FOREIGN diffpair_nmos_4f ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 8.000 BY 6.000 ;
+  PIN gate_p
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 0.000 2.800 0.140 3.200 ;
+    END
+  END gate_p
+  PIN gate_n
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 7.860 2.800 8.000 3.200 ;
+    END
+  END gate_n
+  PIN drn_p
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 0.430 5.200 3.570 5.600 ;
+    END
+  END drn_p
+  PIN drn_n
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 4.430 5.200 7.570 5.600 ;
+    END
+  END drn_n
+  PIN tail
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 0.430 0.400 7.570 0.800 ;
+    END
+  END tail
+  PIN bulk
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 3.500 2.800 4.500 3.200 ;
+    END
+  END bulk
+OBS
+  LAYER met1 ;
+    RECT 0.200 1.000 7.800 5.000 ;
+END
+END diffpair_nmos_4f
+END LIBRARY

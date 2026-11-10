@@ -1,0 +1,236 @@
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN top ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) ( 50000 50000 ) ;
+TRACKS X 480 DO 103 STEP 480 LAYER li1 ;
+TRACKS Y 480 DO 103 STEP 480 LAYER li1 ;
+TRACKS X 370 DO 134 STEP 370 LAYER met1 ;
+TRACKS Y 370 DO 134 STEP 370 LAYER met1 ;
+TRACKS X 480 DO 104 STEP 480 LAYER met2 ;
+TRACKS Y 480 DO 104 STEP 480 LAYER met2 ;
+TRACKS X 740 DO 67 STEP 740 LAYER met3 ;
+TRACKS Y 740 DO 67 STEP 740 LAYER met3 ;
+TRACKS X 960 DO 51 STEP 960 LAYER met4 ;
+TRACKS Y 960 DO 51 STEP 960 LAYER met4 ;
+TRACKS X 3330 DO 14 STEP 3330 LAYER met5 ;
+TRACKS Y 3330 DO 14 STEP 3330 LAYER met5 ;
+GCELLGRID X 0 DO 6 STEP 7200 ;
+GCELLGRID Y 0 DO 6 STEP 7200 ;
+COMPONENTS 1 ;
+    - u0 diffpair_nmos_4f + PLACED ( 21000 22000 ) N ;
+END COMPONENTS
+PINS 19 ;
+    - bulk + NET bulk + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 25000 50000 ) N ;
+    - drn_n_0 + NET drn_n_0 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 30000 50000 ) N ;
+    - drn_n_1 + NET drn_n_1 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 35000 50000 ) N ;
+    - drn_n_2 + NET drn_n_2 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 40000 50000 ) N ;
+    - drn_n_3 + NET drn_n_3 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 45000 50000 ) N ;
+    - drn_p_0 + NET drn_p_0 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 5000 50000 ) N ;
+    - drn_p_1 + NET drn_p_1 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 10000 50000 ) N ;
+    - drn_p_2 + NET drn_p_2 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 15000 50000 ) N ;
+    - drn_p_3 + NET drn_p_3 + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 20000 50000 ) N ;
+    - gate_n + NET gate_n + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 50000 22000 ) N ;
+    - gate_p + NET gate_p + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 0 22000 ) N ;
+    - tail_0 + NET tail_0 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 3000 0 ) N ;
+    - tail_1 + NET tail_1 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 9000 0 ) N ;
+    - tail_2 + NET tail_2 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 15000 0 ) N ;
+    - tail_3 + NET tail_3 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 21000 0 ) N ;
+    - tail_4 + NET tail_4 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 29000 0 ) N ;
+    - tail_5 + NET tail_5 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 35000 0 ) N ;
+    - tail_6 + NET tail_6 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 41000 0 ) N ;
+    - tail_7 + NET tail_7 + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -500 ) ( 140 500 )
+        + FIXED ( 47000 0 ) N ;
+END PINS
+NETS 19 ;
+    - bulk ( PIN bulk ) ( u0 bulk ) + USE SIGNAL
+      + ROUTED met2 ( 24960 25070 ) ( * 49580 0 )
+      NEW met1 ( 24960 25070 ) M1M2_PR ;
+    - drn_n_0 ( PIN drn_n_0 ) ( u0 drn_n_0 ) + USE SIGNAL
+      + ROUTED met1 ( 25500 27565 0 ) ( * 29230 )
+      NEW met1 ( 25500 29230 ) ( 29760 * )
+      NEW met2 ( 30000 48100 ) ( * 49580 0 )
+      NEW met2 ( 29760 48100 ) ( 30000 * )
+      NEW met2 ( 29760 29230 ) ( * 48100 )
+      NEW met1 ( 29760 29230 ) M1M2_PR ;
+    - drn_n_1 ( PIN drn_n_1 ) ( u0 drn_n_1 ) + USE SIGNAL
+      + ROUTED met1 ( 26500 27565 0 ) ( * 28860 )
+      NEW met1 ( 26500 28860 ) ( 30240 * )
+      NEW met1 ( 30240 28490 ) ( * 28860 )
+      NEW met1 ( 30240 28490 ) ( 35040 * )
+      NEW met2 ( 35040 28490 ) ( * 49580 0 )
+      NEW met1 ( 35040 28490 ) M1M2_PR ;
+    - drn_n_2 ( PIN drn_n_2 ) ( u0 drn_n_2 ) + USE SIGNAL
+      + ROUTED met1 ( 27500 27565 0 ) ( * 28120 )
+      NEW met1 ( 27500 28120 ) ( 39840 * )
+      NEW met2 ( 40080 48100 ) ( * 49580 0 )
+      NEW met2 ( 39840 48100 ) ( 40080 * )
+      NEW met2 ( 39840 28120 ) ( * 48100 )
+      NEW met1 ( 39840 28120 ) M1M2_PR ;
+    - drn_n_3 ( PIN drn_n_3 ) ( u0 drn_n_3 ) + USE SIGNAL
+      + ROUTED met1 ( 28500 27380 0 ) ( 43680 * )
+      NEW met2 ( 43680 49580 ) ( 45120 * 0 )
+      NEW met2 ( 43680 27380 ) ( * 49580 )
+      NEW met1 ( 43680 27380 ) M1M2_PR ;
+    - drn_p_0 ( PIN drn_p_0 ) ( u0 drn_p_0 ) + USE SIGNAL
+      + ROUTED met1 ( 5280 27380 ) ( 21500 * 0 )
+      NEW met2 ( 5040 48100 ) ( * 49580 0 )
+      NEW met2 ( 5040 48100 ) ( 5280 * )
+      NEW met2 ( 5280 27380 ) ( * 48100 )
+      NEW met1 ( 5280 27380 ) M1M2_PR ;
+    - drn_p_1 ( PIN drn_p_1 ) ( u0 drn_p_1 ) + USE SIGNAL
+      + ROUTED met1 ( 22500 27565 0 ) ( * 27750 )
+      NEW met1 ( 22080 27750 ) ( 22500 * )
+      NEW li1 ( 21120 27750 ) ( 22080 * )
+      NEW met1 ( 10080 27750 ) ( 21120 * )
+      NEW met2 ( 10080 27750 ) ( * 49580 0 )
+      NEW li1 ( 22080 27750 ) L1M1_PR
+      NEW li1 ( 21120 27750 ) L1M1_PR
+      NEW met1 ( 10080 27750 ) M1M2_PR ;
+    - drn_p_2 ( PIN drn_p_2 ) ( u0 drn_p_2 ) + USE SIGNAL
+      + ROUTED met1 ( 23500 27565 0 ) ( * 28120 )
+      NEW met1 ( 16320 28120 ) ( 23500 * )
+      NEW met2 ( 14880 49580 0 ) ( 16320 * )
+      NEW met2 ( 16320 28120 ) ( * 49580 )
+      NEW met1 ( 16320 28120 ) M1M2_PR ;
+    - drn_p_3 ( PIN drn_p_3 ) ( u0 drn_p_3 ) + USE SIGNAL
+      + ROUTED met1 ( 24500 27565 0 ) ( * 28490 )
+      NEW met1 ( 20160 28490 ) ( 24500 * )
+      NEW met2 ( 19920 48100 ) ( * 49580 0 )
+      NEW met2 ( 19920 48100 ) ( 20160 * )
+      NEW met2 ( 20160 28490 ) ( * 48100 )
+      NEW met1 ( 20160 28490 ) M1M2_PR ;
+    - gate_n ( PIN gate_n ) ( u0 gate_n ) + USE SIGNAL
+      + ROUTED met1 ( 30240 24790 ) ( * 24975 )
+      NEW met1 ( 28930 24975 0 ) ( 30240 * )
+      NEW met2 ( 49920 22200 0 ) ( * 23680 )
+      NEW met2 ( 49440 23680 ) ( 49920 * )
+      NEW met2 ( 49440 23680 ) ( * 24790 )
+      NEW met1 ( 30240 24790 ) ( 49440 * )
+      NEW met1 ( 49440 24790 ) M1M2_PR ;
+    - gate_p ( PIN gate_p ) ( u0 gate_p ) + USE SIGNAL
+      + ROUTED met2 ( 0 22200 0 ) ( * 23680 )
+      NEW met2 ( 0 23680 ) ( 480 * )
+      NEW met2 ( 480 23680 ) ( * 24790 )
+      NEW met1 ( 480 24790 ) ( 19680 * )
+      NEW met1 ( 19680 24790 ) ( * 24975 )
+      NEW met1 ( 19680 24975 ) ( 21070 * 0 )
+      NEW met1 ( 480 24790 ) M1M2_PR ;
+    - tail_0 ( PIN tail_0 ) ( u0 tail_0 ) + USE SIGNAL
+      + ROUTED met2 ( 2880 0 0 ) ( 4320 * )
+      NEW met2 ( 4320 0 ) ( * 22570 )
+      NEW met1 ( 4320 22570 ) ( 21500 * 0 )
+      NEW met1 ( 4320 22570 ) M1M2_PR ;
+    - tail_1 ( PIN tail_1 ) ( u0 tail_1 ) + USE SIGNAL
+      + ROUTED met2 ( 9120 0 0 ) ( 10560 * )
+      NEW met2 ( 10560 0 ) ( * 22940 )
+      NEW met3 ( 10560 22940 ) ( 21600 * )
+      NEW met2 ( 21600 22940 ) ( 22080 * )
+      NEW met2 ( 22080 22570 ) ( * 22940 )
+      NEW met1 ( 22080 22570 ) ( 22500 * 0 )
+      NEW met2 ( 10560 22940 ) M2M3_PR
+      NEW met2 ( 21600 22940 ) M2M3_PR
+      NEW met1 ( 22080 22570 ) M1M2_PR ;
+    - tail_2 ( PIN tail_2 ) ( u0 tail_2 ) + USE SIGNAL
+      + ROUTED met2 ( 14880 0 0 ) ( 16320 * )
+      NEW met2 ( 16320 0 ) ( * 21830 )
+      NEW met1 ( 16320 21830 ) ( 21120 * )
+      NEW met1 ( 21120 21460 ) ( * 21830 )
+      NEW met1 ( 21120 21460 ) ( 23500 * )
+      NEW met1 ( 23500 21460 ) ( * 22570 0 )
+      NEW met1 ( 16320 21830 ) M1M2_PR ;
+    - tail_3 ( PIN tail_3 ) ( u0 tail_3 ) + USE SIGNAL
+      + ROUTED met2 ( 21120 0 0 ) ( 21600 * )
+      NEW met2 ( 21600 0 ) ( * 21090 )
+      NEW met1 ( 21600 21090 ) ( 24500 * )
+      NEW met1 ( 24500 21090 ) ( * 22570 0 )
+      NEW met1 ( 21600 21090 ) M1M2_PR ;
+    - tail_4 ( PIN tail_4 ) ( u0 tail_4 ) + USE SIGNAL
+      + ROUTED met2 ( 28800 0 ) ( 29040 * 0 )
+      NEW met2 ( 28800 0 ) ( * 20720 )
+      NEW met1 ( 25500 20720 ) ( 28800 * )
+      NEW met1 ( 25500 20720 ) ( * 22570 0 )
+      NEW met1 ( 28800 20720 ) M1M2_PR ;
+    - tail_5 ( PIN tail_5 ) ( u0 tail_5 ) + USE SIGNAL
+      + ROUTED met2 ( 33600 0 ) ( 35040 * 0 )
+      NEW met2 ( 33600 0 ) ( * 21090 )
+      NEW met1 ( 26500 21090 ) ( 33600 * )
+      NEW met1 ( 26500 21090 ) ( * 22570 0 )
+      NEW met1 ( 33600 21090 ) M1M2_PR ;
+    - tail_6 ( PIN tail_6 ) ( u0 tail_6 ) + USE SIGNAL
+      + ROUTED li1 ( 35520 21830 ) ( * 22570 )
+      NEW met1 ( 27500 21830 ) ( 35520 * )
+      NEW met1 ( 27500 21830 ) ( * 22570 0 )
+      NEW li1 ( 35520 22570 ) ( 36000 * )
+      NEW met2 ( 39840 0 ) ( 41040 * 0 )
+      NEW met2 ( 39840 0 ) ( * 22570 )
+      NEW met1 ( 36000 22570 ) ( 39840 * )
+      NEW li1 ( 35520 21830 ) L1M1_PR
+      NEW met1 ( 39840 22570 ) M1M2_PR
+      NEW li1 ( 36000 22570 ) L1M1_PR ;
+    - tail_7 ( PIN tail_7 ) ( u0 tail_7 ) + USE SIGNAL
+      + ROUTED met1 ( 35520 22200 ) ( * 22570 )
+      NEW met1 ( 28500 22570 0 ) ( 35520 * )
+      NEW met2 ( 45600 0 ) ( 47040 * 0 )
+      NEW met2 ( 45600 0 ) ( * 22200 )
+      NEW met1 ( 35520 22200 ) ( 45600 * )
+      NEW met1 ( 45600 22200 ) M1M2_PR ;
+END NETS
+END DESIGN

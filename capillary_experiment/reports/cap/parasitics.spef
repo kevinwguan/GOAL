@@ -1,0 +1,145 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "top"
+*DATE "11:11:11 Fri 11 11, 1111"
+*VENDOR "The OpenROAD Project"
+*PROGRAM "OpenROAD"
+*VERSION "1.0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 S
+*C_UNIT 1 F
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*PORTS
+gate_p I
+gate_n I
+drn_p O
+drn_n O
+tail B
+bulk B
+
+*D_NET gate_p 2.08793e-15
+*CONN
+*I u0:gate_p I *D diffpair_nmos_4f
+*P gate_p I
+*CAP
+1 gate_p:1 6.10149e-16
+2 gate_p:2 2.8975e-16
+3 gate_p:3 7.54212e-16
+*RES
+1 gate_p:1 gate_p:2 0
+2 gate_p:1 gate_p:3 12.8571
+3 u0:gate_p gate_p:3 3.03571
+4 gate_p gate_p:2 6.64286
+*END
+
+*D_NET gate_n 2.03138e-15
+*CONN
+*I u0:gate_n I *D diffpair_nmos_4f
+*P gate_n I
+*CAP
+1 gate_n:1 4.72018e-16
+2 gate_n:2 3.05075e-16
+3 gate_n:3 5.43672e-16
+*RES
+1 gate_n:1 gate_n:2 6.42857
+2 gate_n:2 gate_n:3 0
+3 u0:gate_n gate_n:1 3.51786
+4 gate_n gate_n:3 12.4643
+*END
+
+*D_NET drn_p 4.12883e-15
+*CONN
+*I u0:drn_p_0 O *D diffpair_nmos_4f
+*P drn_p O
+*I u0:drn_p_1 O *D diffpair_nmos_4f
+*I u0:drn_p_2 O *D diffpair_nmos_4f
+*I u0:drn_p_3 O *D diffpair_nmos_4f
+*CAP
+1 drn_p:1 3.05075e-16
+2 drn_p:2 7.84296e-16
+3 drn_p:3 7.72279e-16
+4 drn_p:4 1.06865e-15
+*RES
+1 drn_p:1 drn_p:2 6.42857
+2 drn_p:1 drn_p:3 0
+3 drn_p:3 drn_p:4 12.8571
+4 u0:drn_p_0 drn_p:3 4.84821
+5 u0:drn_p_1 drn_p:2 4.25893
+6 u0:drn_p_2 drn_p:2 3.36607
+7 u0:drn_p_3 drn_p:2 2.47321
+8 drn_p drn_p:4 11.6429
+*END
+
+*D_NET drn_n 3.95885e-15
+*CONN
+*P drn_n O
+*I u0:drn_n_0 O *D diffpair_nmos_4f
+*I u0:drn_n_1 O *D diffpair_nmos_4f
+*I u0:drn_n_2 O *D diffpair_nmos_4f
+*I u0:drn_n_3 O *D diffpair_nmos_4f
+*CAP
+1 drn_n:1 9.37257e-16
+2 drn_n:2 3.05075e-16
+3 drn_n:3 5.60807e-16
+4 drn_n:4 1.04217e-15
+*RES
+1 drn_n:1 drn_n:2 6.42857
+2 drn_n:2 drn_n:3 0
+3 drn_n:3 drn_n:4 12.8571
+4 u0:drn_n_0 drn_n:1 1.99107
+5 u0:drn_n_1 drn_n:1 2.88393
+6 u0:drn_n_2 drn_n:1 3.77679
+7 u0:drn_n_3 drn_n:1 4.66964
+8 drn_n drn_n:4 11.0357
+*END
+
+*D_NET tail 5.64559e-15
+*CONN
+*P tail B
+*I u0:tail_0 B *D diffpair_nmos_4f
+*I u0:tail_1 B *D diffpair_nmos_4f
+*I u0:tail_2 B *D diffpair_nmos_4f
+*I u0:tail_3 B *D diffpair_nmos_4f
+*I u0:tail_4 B *D diffpair_nmos_4f
+*I u0:tail_5 B *D diffpair_nmos_4f
+*I u0:tail_6 B *D diffpair_nmos_4f
+*I u0:tail_7 B *D diffpair_nmos_4f
+*CAP
+1 tail:1 5.69049e-16
+2 tail:2 3.05075e-16
+3 tail:3 2.08083e-15
+4 tail:4 1.01413e-15
+*RES
+1 tail:1 tail:2 6.42857
+2 tail:2 tail:3 0
+3 tail:4 tail:3 19.2857
+4 u0:tail_0 tail:1 5.5625
+5 u0:tail_1 tail:3 4.97321
+6 u0:tail_2 tail:3 4.08036
+7 u0:tail_3 tail:3 3.1875
+8 u0:tail_4 tail:3 2.70536
+9 u0:tail_5 tail:3 3.59821
+10 u0:tail_6 tail:3 4.49107
+11 u0:tail_7 tail:3 5.38393
+12 tail tail:4 3.96429
+*END
+
+*D_NET bulk 2.00489e-15
+*CONN
+*P bulk B
+*I u0:bulk B *D diffpair_nmos_4f
+*CAP
+1 bulk:1 0
+2 bulk:2 6.03647e-16
+3 bulk:3 9.59604e-16
+*RES
+1 bulk:1 bulk:2 0
+2 bulk:2 bulk:3 12.8571
+3 u0:bulk bulk:2 0.982143
+4 bulk bulk:3 9.14286
+*END
+

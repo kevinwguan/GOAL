@@ -1,0 +1,167 @@
+VERSION 5.7 ;
+NOWIREEXTENSIONATPIN ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+MACRO diffpair_nmos_4f
+  CLASS BLOCK ;
+  FOREIGN diffpair_nmos_4f ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 8.000 BY 6.000 ;
+  PIN gate_p
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 0.000 2.800 0.140 3.200 ;
+    END
+  END gate_p
+  PIN gate_n
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 7.860 2.800 8.000 3.200 ;
+    END
+  END gate_n
+  PIN drn_p_0
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 0.430 5.200 0.570 5.600 ;
+    END
+  END drn_p_0
+  PIN drn_p_1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 1.430 5.200 1.570 5.600 ;
+    END
+  END drn_p_1
+  PIN drn_p_2
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 2.430 5.200 2.570 5.600 ;
+    END
+  END drn_p_2
+  PIN drn_p_3
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 3.430 5.200 3.570 5.600 ;
+    END
+  END drn_p_3
+  PIN drn_n_0
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 4.430 5.200 4.570 5.600 ;
+    END
+  END drn_n_0
+  PIN drn_n_1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 5.430 5.200 5.570 5.600 ;
+    END
+  END drn_n_1
+  PIN drn_n_2
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 6.430 5.200 6.570 5.600 ;
+    END
+  END drn_n_2
+  PIN drn_n_3
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 7.430 5.200 7.570 5.600 ;
+    END
+  END drn_n_3
+  PIN tail_0
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 0.430 0.400 0.570 0.800 ;
+    END
+  END tail_0
+  PIN tail_1
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 1.430 0.400 1.570 0.800 ;
+    END
+  END tail_1
+  PIN tail_2
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 2.430 0.400 2.570 0.800 ;
+    END
+  END tail_2
+  PIN tail_3
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 3.430 0.400 3.570 0.800 ;
+    END
+  END tail_3
+  PIN tail_4
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 4.430 0.400 4.570 0.800 ;
+    END
+  END tail_4
+  PIN tail_5
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 5.430 0.400 5.570 0.800 ;
+    END
+  END tail_5
+  PIN tail_6
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 6.430 0.400 6.570 0.800 ;
+    END
+  END tail_6
+  PIN tail_7
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 7.430 0.400 7.570 0.800 ;
+    END
+  END tail_7
+  PIN bulk
+    DIRECTION INOUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met1 ;
+        RECT 3.500 2.800 4.500 3.200 ;
+    END
+  END bulk
+OBS
+  LAYER met1 ;
+    RECT 0.200 1.000 7.800 5.000 ;
+END
+END diffpair_nmos_4f
+END LIBRARY

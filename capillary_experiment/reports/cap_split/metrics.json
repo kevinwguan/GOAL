@@ -1,0 +1,17 @@
+{
+	"global_route__vias": 24,
+	"global_route__wirelength": 748,
+	"route__net": 19,
+	"route__net__special": 0,
+	"route__drc_errors__iter:0": 4,
+	"route__wirelength__iter:0": 605,
+	"route__drc_errors__iter:1": 0,
+	"route__wirelength__iter:1": 605,
+	"route__drc_errors": 0,
+	"route__wirelength": 605,
+	"route__vias": 25,
+	"route__vias__singlecut": 25,
+	"route__vias__multicut": 0,
+	"flow__warnings__count": 31,
+	"flow__errors__count": 0
+}

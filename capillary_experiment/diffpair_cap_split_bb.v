@@ -1,0 +1,21 @@
+module diffpair_nmos_4f (gate_p, gate_n, drn_p_0, drn_p_1, drn_p_2, drn_p_3, drn_n_0, drn_n_1, drn_n_2, drn_n_3, tail_0, tail_1, tail_2, tail_3, tail_4, tail_5, tail_6, tail_7, bulk);
+  input  gate_p;
+  input  gate_n;
+  output drn_p_0;
+  output drn_p_1;
+  output drn_p_2;
+  output drn_p_3;
+  output drn_n_0;
+  output drn_n_1;
+  output drn_n_2;
+  output drn_n_3;
+  inout  tail_0;
+  inout  tail_1;
+  inout  tail_2;
+  inout  tail_3;
+  inout  tail_4;
+  inout  tail_5;
+  inout  tail_6;
+  inout  tail_7;
+  inout  bulk;
+endmodule

@@ -1,0 +1,30 @@
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN top ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) ( 50000 50000 ) ;
+
+COMPONENTS 1 ;
+  - u0 diffpair_nmos_4f + PLACED ( 21000 22000 ) N ;
+END COMPONENTS
+
+PINS 6 ;
+  - gate_p + NET gate_p + DIRECTION INPUT + FIXED ( 0 22000 ) N + LAYER met2 ( -140 -500 ) ( 140 500 ) ;
+  - gate_n + NET gate_n + DIRECTION INPUT + FIXED ( 50000 22000 ) N + LAYER met2 ( -140 -500 ) ( 140 500 ) ;
+  - drn_p + NET drn_p + DIRECTION OUTPUT + FIXED ( 15000 50000 ) N + LAYER met2 ( -140 -500 ) ( 140 500 ) ;
+  - drn_n + NET drn_n + DIRECTION OUTPUT + FIXED ( 35000 50000 ) N + LAYER met2 ( -140 -500 ) ( 140 500 ) ;
+  - tail + NET tail + DIRECTION INOUT + FIXED ( 25000 0 ) N + LAYER met2 ( -140 -500 ) ( 140 500 ) ;
+  - bulk + NET bulk + DIRECTION INOUT + FIXED ( 25000 50000 ) N + LAYER met2 ( -140 -500 ) ( 140 500 ) ;
+END PINS
+
+NETS 6 ;
+  - gate_p ( PIN gate_p ) ( u0 gate_p ) ;
+  - gate_n ( PIN gate_n ) ( u0 gate_n ) ;
+  - drn_p ( PIN drn_p ) ( u0 drn_p ) ;
+  - drn_n ( PIN drn_n ) ( u0 drn_n ) ;
+  - tail ( PIN tail ) ( u0 tail ) ;
+  - bulk ( PIN bulk ) ( u0 bulk ) ;
+END NETS
+
+END DESIGN

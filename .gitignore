@@ -1,2 +1,13 @@
 # Local workflow tracker (its own nested git repo, not project content)
 todo/
+
+# Python
+__pycache__/
+*.pyc
+
+# capillary_experiment: local OpenROAD-flow-scripts checkout/symlink that run.sh
+# looks for by default, untracked render/latex outputs, and the duplicate
+# OpenROAD log that run.sh regenerates next to stdout.log
+capillary_experiment/OpenROAD-flow-scripts
+capillary_experiment/out/
+capillary_experiment/reports/*/openroad.log

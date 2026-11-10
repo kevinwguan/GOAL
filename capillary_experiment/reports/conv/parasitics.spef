@@ -1,0 +1,117 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "top"
+*DATE "11:11:11 Fri 11 11, 1111"
+*VENDOR "The OpenROAD Project"
+*PROGRAM "OpenROAD"
+*VERSION "1.0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 S
+*C_UNIT 1 F
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*PORTS
+gate_p I
+gate_n I
+drn_p O
+drn_n O
+tail B
+bulk B
+
+*D_NET gate_p 2.08793e-15
+*CONN
+*I u0:gate_p I *D diffpair_nmos_4f
+*P gate_p I
+*CAP
+1 gate_p:1 6.10149e-16
+2 gate_p:2 2.8975e-16
+3 gate_p:3 7.54212e-16
+*RES
+1 gate_p:1 gate_p:2 0
+2 gate_p:1 gate_p:3 12.8571
+3 u0:gate_p gate_p:3 3.03571
+4 gate_p gate_p:2 6.64286
+*END
+
+*D_NET gate_n 2.03138e-15
+*CONN
+*I u0:gate_n I *D diffpair_nmos_4f
+*P gate_n I
+*CAP
+1 gate_n:1 4.72018e-16
+2 gate_n:2 3.05075e-16
+3 gate_n:3 5.43672e-16
+*RES
+1 gate_n:1 gate_n:2 6.42857
+2 gate_n:2 gate_n:3 0
+3 u0:gate_n gate_n:1 3.51786
+4 gate_n gate_n:3 12.4643
+*END
+
+*D_NET drn_p 3.23642e-15
+*CONN
+*I u0:drn_p O *D diffpair_nmos_4f
+*P drn_p O
+*CAP
+1 drn_p:1 5.60807e-16
+2 drn_p:2 1.06865e-15
+3 drn_p:3 3.05075e-16
+4 drn_p:4 5.49558e-16
+*RES
+1 drn_p:1 drn_p:2 12.8571
+2 drn_p:1 drn_p:3 0
+3 drn_p:3 drn_p:4 6.42857
+4 u0:drn_p drn_p:4 5.15179
+5 drn_p drn_p:2 11.6429
+*END
+
+*D_NET drn_n 2.88346e-15
+*CONN
+*I u0:drn_n O *D diffpair_nmos_4f
+*P drn_n O
+*CAP
+1 drn_n:1 3.99563e-16
+2 drn_n:2 3.05075e-16
+3 drn_n:3 5.60807e-16
+4 drn_n:4 1.04217e-15
+*RES
+1 drn_n:1 drn_n:2 6.42857
+2 drn_n:2 drn_n:3 0
+3 drn_n:3 drn_n:4 12.8571
+4 u0:drn_n drn_n:1 1.99107
+5 drn_n drn_n:4 11.0357
+*END
+
+*D_NET tail 2.53999e-15
+*CONN
+*I u0:tail B *D diffpair_nmos_4f
+*P tail B
+*CAP
+1 tail:1 0
+2 tail:2 1.09708e-15
+3 tail:3 1.01413e-15
+*RES
+1 tail:1 tail:2 0
+2 tail:3 tail:2 19.2857
+3 u0:tail tail:2 5.86607
+4 tail tail:3 3.96429
+*END
+
+*D_NET bulk 2.00489e-15
+*CONN
+*I u0:bulk B *D diffpair_nmos_4f
+*P bulk B
+*CAP
+1 bulk:1 0
+2 bulk:2 6.03647e-16
+3 bulk:3 9.59604e-16
+*RES
+1 bulk:1 bulk:2 0
+2 bulk:2 bulk:3 12.8571
+3 u0:bulk bulk:2 0.982143
+4 bulk bulk:3 9.14286
+*END
+
