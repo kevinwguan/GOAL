@@ -96,7 +96,7 @@ post_mode() {
     esac
     echo "--- Post-processing $mode -> $fig (theme=$FIG_THEME) ---"
     mkdir -p "$PAPER_FIGS"
-    python3 -I "$SCRIPT_DIR/render_post.py" \
+    python3 "$SCRIPT_DIR/render_post.py" \
         "$SCRIPT_DIR/reports/$mode/route.png" \
         -o "$PAPER_FIGS/$fig" --theme "$FIG_THEME"
 }
@@ -104,7 +104,7 @@ post_mode() {
 emit_latex() {
     echo "--- Emitting Table 3 body → $PAPER_TABLE ---"
     mkdir -p "$(dirname "$PAPER_TABLE")"
-    python3 -I "$SCRIPT_DIR/verify.py" --latex > "$PAPER_TABLE"
+    python3 "$SCRIPT_DIR/verify.py" --latex > "$PAPER_TABLE"
     echo "Wrote $PAPER_TABLE ($(wc -l < "$PAPER_TABLE") lines)"
 }
 

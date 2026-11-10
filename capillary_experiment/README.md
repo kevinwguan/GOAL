@@ -112,15 +112,25 @@ only needed when tweaking geometry or port placement.
 - **`render_post.py` (Fig. 6):** Python 3 with numpy, Pillow, and scipy.
 
 The retained `reports/*/stdout.log` files do not print an OpenROAD build
-version. The results were produced with one OpenROAD build; `verify.py`
-will flag numerical drift beyond its recorded tolerances on another build.
+version. The reports were re-verified with an OpenROAD binary whose
+`openroad -version` output is `HEAD-HASH-NOTFOUND`, using OpenROAD-flow-scripts
+commit `c23743a3bd3a3e9e7a2e714eb298109428438b77` and its sky130hs platform.
+Because this binary does not expose a descriptive version, its SHA-256 is
+`8591e9119d91e80409d4456b885620554c25cae42b8c6e6a760741d5b08db205`.
+
+A fresh three-mode route and render reproduced `metrics.json`,
+`parasitics.spef`, `route.guide`, `routed.def`, `drc.rpt`, and `route.png`
+byte-for-byte. After path normalization, `stdout.log` differed only in
+reported memory and peak-memory usage. `verify.py` passed on the fresh
+reports and will flag numerical drift beyond its recorded tolerances on
+another build.
 
 ## Running
 
 From this directory:
 
 ```bash
-python3 -I gen/generate_macro.py  # regenerate LEF/DEF/Verilog (optional)
+python3 gen/generate_macro.py  # regenerate LEF/DEF/Verilog (optional)
 ./run.sh                        # run all three modes (routing + SPEF)
 ./run.sh conv                   # single mode
 ./run.sh cap
@@ -139,7 +149,8 @@ Fig. 6(a–c). The `latex` step writes `capillary_comparison_body.tex`.
 Both steps write to the ignored `out/` directory by default. Set `PAPER_DIR`
 to a writable paper root to write figures to `$PAPER_DIR/figures/` and the
 table body to `$PAPER_DIR/tables/` instead. `FIG_THEME=light|dark|cb` selects
-the post-processing palette. The runner uses isolated Python (`python3 -I`).
+the post-processing palette. The runner uses `python3` from the current
+environment, including its installed user-site packages.
 
 For a full re-route with an installed toolchain:
 
@@ -151,8 +162,8 @@ ORFS_DIR=./OpenROAD-flow-scripts ./run.sh paper
 ## Verifying the paper's numbers
 
 ```bash
-python3 -I verify.py           # validate all three modes, print summary
-python3 -I verify.py --latex   # emit Table 3 body for \input (no validation)
+python3 verify.py           # validate all three modes, print summary
+python3 verify.py --latex   # emit Table 3 body for \input (no validation)
 ```
 
 Parses `reports/{conv,cap,cap_split}/{parasitics.spef,metrics.json,stdout.log}`.
@@ -243,7 +254,7 @@ separately because the routed paths are not symmetric.
 
 ```bash
 ./run.sh           # regenerate reports/{conv,cap,cap_split}/
-python3 -I verify.py  # validate all modes + print per-finger path breakdown
+python3 verify.py  # validate all modes + print per-finger path breakdown
 ```
 
 ### Scope
