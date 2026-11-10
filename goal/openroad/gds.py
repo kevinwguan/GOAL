@@ -1,6 +1,7 @@
 """DEF → final GDS, using the ORFS def2stream.py merge strategy."""
 
 from pathlib import Path
+import re
 import klayout.db as kdb
 from .locate import Toolchain
 
@@ -24,6 +25,10 @@ def merge_gds(
         str(p.resolve()) for p in macro_lefs
     ]
     options.lefdef_config.read_lef_with_def = True
+    units = re.search(r"UNITS DISTANCE MICRONS (\d+)\s*;", def_path.read_text())
+    if units is None:
+        raise ValueError("DEF lacks distance units")
+    options.lefdef_config.dbu = 1 / int(units[1])
     layout = kdb.Layout()
     layout.read(str(def_path), options)
     if layout.cell(top_name) is None:

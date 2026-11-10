@@ -3,6 +3,7 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 import re
+import math
 from goal.lef.verilog import identifier
 from .locate import Toolchain
 
@@ -28,7 +29,7 @@ class FlowSpec:
     io_pins: dict[str, tuple[float, float]] = field(default_factory=dict)
     routing_layers: tuple[str, str] = ("met1", "met5")
     io_layer: str = "met2"
-    io_size: float = 0.28
+    io_size: float | None = None
     placed_def: Path | None = None
     auto_place: bool = False
     site: str | None = None
@@ -46,6 +47,35 @@ def generate(spec: FlowSpec, tools: Toolchain, out_dir: Path) -> tuple[str, str]
     site = spec.site or (sites[0] if sites else None)
     if not site and not spec.placed_def:
         raise ValueError("Technology has no SITE; set FlowSpec.site")
+    io_size = spec.io_size
+    if io_size is None:
+        text = tools.tech_lef.read_text()
+        block = re.search(
+            r"^LAYER "
+            + re.escape(spec.io_layer)
+            + r"\s*$(.*?)^END "
+            + re.escape(spec.io_layer)
+            + r"\s*$",
+            text,
+            re.M | re.S,
+        )
+        if block is None:
+            raise ValueError(f"No IO layer {spec.io_layer} in technology")
+        width = re.search(r"\bWIDTH\s+([\d.eE+-]+)", block[1])
+        area = re.search(r"\bAREA\s+([\d.eE+-]+)", block[1])
+        # Quantize up on a conservative 5nm construction grid.
+        io_size = (
+            math.ceil(
+                max(
+                    0.28,
+                    float(width[1]) if width else 0,
+                    math.sqrt(float(area[1])) if area else 0,
+                )
+                / 0.005
+                - 1e-9
+            )
+            * 0.005
+        )
     lines = [f"read_lef {quote(tools.tech_lef)}"]
     lines += [f"read_lef {quote(p.resolve())}" for p in spec.macro_lefs]
     if spec.placed_def:
@@ -75,7 +105,7 @@ def generate(spec: FlowSpec, tools: Toolchain, out_dir: Path) -> tuple[str, str]
         if spec.io_pins:
             for name, (x, y) in spec.io_pins.items():
                 lines.append(
-                    f"place_pin -pin_name {identifier(name)} -layer {identifier(spec.io_layer)} -location {{{x} {y}}} -pin_size {{{spec.io_size} {spec.io_size}}} -placed_status"
+                    f"place_pin -pin_name {identifier(name)} -layer {identifier(spec.io_layer)} -location {{{x} {y}}} -pin_size {{{io_size} {io_size}}} -placed_status"
                 )
         else:
             lo, hi = map(identifier, spec.routing_layers)

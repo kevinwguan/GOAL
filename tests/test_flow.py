@@ -15,14 +15,15 @@ def test_help(command):
 
 
 @pytest.mark.openroad
-def test_three_modes(tmp_path):
+@pytest.mark.parametrize("pdk_name", ["sky130A", "gf180mcuD"])
+def test_three_modes(tmp_path, pdk_name):
     try:
-        locate(PDK.load("sky130A"))
+        locate(PDK.load(pdk_name))
     except FileNotFoundError as error:
         if os.getenv("OPENROAD"):
             raise
         pytest.skip(str(error))
-    result = run_flow({"pdk": "sky130A"}, tmp_path / "vehicle")
+    result = run_flow({"pdk": pdk_name}, tmp_path / "vehicle")
     assert result["all_routes_drc_clean"]
     assert result["direction_check"]
     assert all(ratio > 1 for ratio in result["conv_over_split_R"].values())

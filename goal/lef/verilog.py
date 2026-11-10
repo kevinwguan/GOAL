@@ -34,12 +34,17 @@ def write_wrapper(
     path: Path,
     cap_split: bool = False,
     top: str = "goal_top",
+    external_nets: list[str] | None = None,
 ) -> dict[str, str]:
     """Join aliases electrically, or expose each physical pin as its own IO."""
     mapping = connections(aliases, cap_split)
     nets = sorted(set(mapping.values()))
-    text = f"module {identifier(top)}({', '.join(nets)});\n"
-    text += "".join(f"  inout {net};\n" for net in nets)
+    ports = nets if external_nets is None else sorted(set(external_nets))
+    if not set(ports) <= set(nets):
+        raise ValueError("External net absent from macro aliases")
+    text = f"module {identifier(top)}({', '.join(ports)});\n"
+    text += "".join(f"  inout {net};\n" for net in ports)
+    text += "".join(f"  wire {net};\n" for net in nets if net not in ports)
     text += (
         f"  {identifier(macro)} pair ("
         + ", ".join(f".{pin}({net})" for pin, net in mapping.items())

@@ -53,7 +53,6 @@ def floorplan(meta: dict, split: bool, margin: float, pdk) -> dict:
         placements={"pair": (margin, margin)},
         io_pins=destinations,
         io_layer=pdk.lef_layer("met2"),
-        io_size=max(0.28, pdk.rule("met1_width")),
         routing_layers=(layers[0], layers[-1]),
     )
 
