@@ -53,11 +53,14 @@ class PDK:
         return self.data["rules"][name]["value"]
 
     def lef_layer(self, name: str) -> str:
-        return self.data["lef_layers"][name]
+        return (self.data["lef_layers"] | self.data.get("obs_layers", {}))[name]
 
     def validate_lef(self, tech_lef: Path) -> None:
         layers = set(re.findall(r"^\s*LAYER\s+(\S+)", tech_lef.read_text(), re.M))
-        missing = set(self.data["lef_layers"].values()) - layers
+        missing = (
+            set((self.data["lef_layers"] | self.data.get("obs_layers", {})).values())
+            - layers
+        )
         if missing:
             raise ValueError(f"LEF layers absent from technology: {sorted(missing)}")
 

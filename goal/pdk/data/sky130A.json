@@ -3273,5 +3273,59 @@
   "platform": "sky130hs",
   "tech_lef": "lef/sky130_fd_sc_hs.tlef",
   "klayout_tech": "sky130hs.lyt",
-  "rc_rules": "rcx_patterns.rules"
+  "rc_rules": "rcx_patterns.rules",
+  "connectivity": {
+    "conductors": [
+      "local",
+      "met1",
+      "met2",
+      "met3",
+      "met4",
+      "met5"
+    ],
+    "vias": [
+      [
+        "local",
+        "local_via",
+        "met1"
+      ],
+      [
+        "met1",
+        "via1",
+        "met2"
+      ],
+      [
+        "met2",
+        "native.via2.drawing",
+        "met3"
+      ],
+      [
+        "met3",
+        "native.via3.drawing",
+        "met4"
+      ],
+      [
+        "met4",
+        "native.via4.drawing",
+        "met5"
+      ]
+    ]
+  },
+  "strap_rc": {
+    "via1_ohm": 4.5,
+    "source": "PDK libs.tech/magic typical-corner contact m2c 4500 milliohm (also GF180 tech LEF via resistance)"
+  },
+  "lef_vias": {
+    "via1": "via",
+    "native.via2.drawing": "via2",
+    "native.via3.drawing": "via3",
+    "native.via4.drawing": "via4"
+  },
+  "stream_layers": {
+    "local": "li1",
+    "local_via": "mcon"
+  },
+  "obs_layers": {
+    "local": "li1"
+  }
 }

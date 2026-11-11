@@ -35,7 +35,8 @@ def write_abstract(
         identifier(pin.name)
         identifier(pin.info["net"])
         pdk.lef_layer(pin.info["generic_layer"])
-        grouped[pin.info["net"]].append(pin)
+        if not pin.info.get("terminal_only", False):
+            grouped[pin.info["net"]].append(pin)
     pins, aliases = {}, {}
     for net, ports in sorted(grouped.items()):
         if mode == "merged":
@@ -97,6 +98,16 @@ def write_abstract(
         width=component.dxsize,
         height=component.dysize,
         source_origin=[xoff, yoff],
+        terminals=[
+            dict(
+                name=p.name,
+                net=p.info["net"],
+                layer=p.info["generic_layer"],
+                box=list(shifted(port_box(p))),
+            )
+            for p in component.ports
+            if not p.name.endswith("_strap") and p.name != "tail_bridge"
+        ],
         obs_rectangles=sum(map(len, obs.values())),
     )
     (dest / f"{macro_name}.json").write_text(json.dumps(metadata, indent=2) + "\n")

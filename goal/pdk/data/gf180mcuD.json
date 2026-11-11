@@ -1076,5 +1076,46 @@
   "platform": "gf180",
   "tech_lef": "lef/gf180mcu_5LM_1TM_9K_9t_tech.lef",
   "klayout_tech": "KLayout/gf180mcu_5LM_1TM_9K_9t.lyt",
-  "rc_rules": "openROAD/rcx/gf180mcu_1p5m_1tm_9k_sp_smim_OPTB_typ.rules"
+  "rc_rules": "openROAD/rcx/gf180mcu_1p5m_1tm_9k_sp_smim_OPTB_typ.rules",
+  "connectivity": {
+    "conductors": [
+      "met1",
+      "met2",
+      "met3",
+      "met4",
+      "met5"
+    ],
+    "vias": [
+      [
+        "met1",
+        "via1",
+        "met2"
+      ],
+      [
+        "met2",
+        "native.Via2",
+        "met3"
+      ],
+      [
+        "met3",
+        "native.Via3",
+        "met4"
+      ],
+      [
+        "met4",
+        "native.Via4",
+        "met5"
+      ]
+    ]
+  },
+  "strap_rc": {
+    "via1_ohm": 4.5,
+    "source": "PDK libs.tech/magic typical-corner contact m2c 4500 milliohm (also GF180 tech LEF via resistance)"
+  },
+  "lef_vias": {
+    "via1": "Via1",
+    "native.Via2": "Via2",
+    "native.Via3": "Via3",
+    "native.Via4": "Via4"
+  }
 }

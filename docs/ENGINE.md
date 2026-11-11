@@ -286,3 +286,33 @@ whitespace checks pass. The installable wheel includes both PDK tables; the
 installed `goal` entry point was exercised for help, LEF emission and routing.
 All new Python modules are below 400 lines. New tracked files contain no
 machine-specific home paths, generated outputs or files above 1MB.
+
+### Physical conventional baseline (H1)
+
+`mosfet(..., strapped=True)` and `diffpair(..., strapped=True)` add only M1
+stems, via1 cuts and M2 source/drain rails to the unstrapped geometry. The
+pair's M2 tail bridge connects its two source rails. Device geometry, guard
+rings, footprint and placement are identical. Conv uses this variant and
+exposes its M2 rails in the merged LEF; cap and cap_split remain unstrapped.
+The original M1 finger landings remain in JSON `terminals` for verification.
+
+`goal.signoff.connectivity.Connectivity` extracts conductors from the final
+GDS with KLayout, using explicit PDK metal/via tables (including Sky130 LI and
+mcon). It checks every finger and IO landing, rejects disconnected aliases
+and shorts between different nets. This exposed two earlier stream-out bugs:
+DEF reader configuration was modified through a copy without assigning it
+back, and importing GF180 macro GDS changed the destination DBU. Stream-out
+now assigns the configuration, explicitly maps routing/via/pin shapes to PDK
+drawing layers, and copies macro trees across layouts with DBU conversion.
+Local-interconnect OBS also prevent pin-access routes through the bulk ring.
+Earlier final-GDS Magic counts did not check correctly mapped routed metal.
+
+Conv R includes OpenRCX routing R plus the measured internal strap network:
+M1 stem centre-line length/width and M2 rail segment length/width, multiplied
+by the tech LEF sheet resistance, plus 4.5 ohm per via1 (PDK typical-corner
+Magic `contact m2c 4500` milliohm). A nodal solve shorts all finger centres
+and uses the single actual routed M2 aperture, measured from final GDS, as
+the other boundary. Multiple disconnected apertures are rejected. This is
+a 1D resistance approximation; current spreading, FEOL/contact R, gate/bulk
+internal R and internal capacitance are excluded. It is not field extraction
+or electrical signoff. Cap/split still use routing-only OpenRCX R.

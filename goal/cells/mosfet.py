@@ -19,6 +19,7 @@ def mosfet(
     gate: str = "G",
     bulk: str = "B",
     name: str | None = None,
+    strapped: bool = False,
 ) -> gf.Component:
     """Construct isolated, contacted fingers inside a bulk-tapped guard ring."""
     if kind not in ("nmos", "pmos") or fingers < 1:
@@ -53,6 +54,7 @@ def mosfet(
     implant = "nimplant" if kind == "nmos" else "pimplant"
     enc = max(pdk.rule("sub_surround"), pdk.rule("gate_extension"))
     gate_boxes = []
+    terminals = {source: [], drain: []}
     for f in range(fingers):
         x = f * pitch
         gx = x + extension + length / 2
@@ -81,6 +83,8 @@ def mosfet(
         db = contact(c, pdk, dx, width / 2)
         port(c, pdk, f"S{f}", source, sb)
         port(c, pdk, f"D{f}", drain, db)
+        terminals[source].append(sb)
+        terminals[drain].append(db)
         gate_boxes.append(contact(c, pdk, gx, gate_y, poly=True))
     g0 = gate_boxes[0]
     gn = gate_boxes[-1]
@@ -103,6 +107,11 @@ def mosfet(
     if kind == "pmos":
         e = pdk.rule("well_overlap_p")
         rect(c, pdk, "nwell", (rb[0] - e, rb[1] - e, rb[2] + e, rb[3] + e))
+    if strapped:
+        from .straps import add_straps
+
+        add_straps(c, pdk, terminals, width)
+    c.info["strapped"] = strapped
     c.info["kind"] = kind
     c.info["fingers"] = fingers
     return c

@@ -6,11 +6,13 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from .openroad.metrics import scrub
+from goal.openroad.metrics import scrub
 
 
 def magic_drc(pdk, gds: Path, top: str, out_dir: Path) -> dict:
     """Run drc(full), or explicitly record why it was not tested."""
+    if not Path(gds).is_file():
+        raise FileNotFoundError(gds)
     binary = shutil.which("magic")
     root = os.getenv("PDK_ROOT")
     if not binary or not root:

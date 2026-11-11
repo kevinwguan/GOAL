@@ -23,14 +23,28 @@ def merge_gds(
     technology = kdb.Technology()
     technology.load(str(tools.klayout_tech))
     options = technology.load_layout_options
-    options.lefdef_config.lef_files = [str(tools.tech_lef)] + [
-        str(p.resolve()) for p in macro_lefs
-    ]
-    options.lefdef_config.read_lef_with_def = True
+    config = options.lefdef_config
+    config.lef_files = [str(tools.tech_lef)] + [str(p.resolve()) for p in macro_lefs]
+    config.read_lef_with_def = True
+    if not tools.gds_layers:
+        raise ValueError("Toolchain needs an explicit PDK GDS layer map")
+    layer_map = kdb.LayerMap()
+    for name, (layer, datatype) in tools.gds_layers.items():
+        layer_map.map(f"{name}.drawing : {layer}/{datatype}")
+    config.layer_map = layer_map
+    config.routing_suffix = ".drawing"
+    config.via_geometry_suffix = ".drawing"
+    config.pins_suffix = ".drawing"
+    config.produce_cell_outlines = False
+    config.produce_labels = False
+    config.produce_obstructions = False
+    config.produce_blockages = False
+    config.create_other_layers = False
     units = re.search(r"UNITS DISTANCE MICRONS (\d+)\s*;", def_path.read_text())
     if units is None:
         raise ValueError("DEF lacks distance units")
-    options.lefdef_config.dbu = 1 / int(units[1])
+    config.dbu = 1 / int(units[1])
+    options.lefdef_config = config
     layout = kdb.Layout()
     layout.read(str(def_path), options)
     if layout.cell(top_name) is None:
@@ -48,7 +62,9 @@ def merge_gds(
         source.read(str(path))
         if path in macro_gds:
             macro_names += [cell.name for cell in source.top_cells()]
-        layout.read(str(path))
+        for source_top in source.top_cells():
+            target = layout.cell(source_top.name) or layout.create_cell(source_top.name)
+            target.copy_tree(source_top)
     final = kdb.Layout()
     final.dbu = layout.dbu
     top = final.create_cell(top_name)

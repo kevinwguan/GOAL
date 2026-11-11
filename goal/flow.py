@@ -8,12 +8,16 @@ from pathlib import Path
 
 from .cells import diffpair
 from .lef import write_abstract
+from .lef.defports import routed_component
+from .lef.ports import port_box
 from .lef.verilog import connections, write_wrapper
 from .openroad import FlowSpec, locate, run
 from .openroad.gds import merge_gds
 from .pdk import PDK
 from .rc import effective, parse_spef
 from .signoff import magic_drc
+from .signoff.connectivity import Connectivity, macro_terminals
+from .signoff.strap_rc import strap_resistance
 
 MODES = ("conv", "cap", "cap_split")
 
@@ -88,8 +92,8 @@ def run_flow(config: str | Path | dict, out_dir: str | Path | None = None) -> di
         raise FileExistsError(f"Output exists: {dest}; choose a fresh --out directory")
     dest.mkdir(parents=True)
     results = {}
-    component = diffpair(pdk)
     for mode in MODES:
+        component = diffpair(pdk, strapped=mode == "conv")
         out = dest / mode
         meta = write_abstract(
             component,
@@ -120,6 +124,35 @@ def run_flow(config: str | Path | dict, out_dir: str | Path | None = None) -> di
             spec.top,
             out / "route/final.gds",
         )
+        physical = macro_terminals(meta, spec.placements["pair"], mode == "cap_split")
+        io_component = routed_component(
+            out / "route/routed.def", out / "route/final.gds", pdk
+        )
+        physical += [
+            dict(
+                name=p.name,
+                net=p.name,
+                layer=p.info["generic_layer"],
+                box=list(port_box(p)),
+            )
+            for p in io_component.ports
+        ]
+        metrics["connectivity"] = Connectivity(out / "route/final.gds", pdk).check(
+            physical
+        )
+        if mode == "conv":
+            metrics["strap_rc"] = strap_resistance(
+                out / "route/final.gds",
+                meta,
+                pdk,
+                tools.tech_lef,
+                spec.placements["pair"],
+            )
+            for alias, internal in metrics["strap_rc"].items():
+                row = metrics["nets"][alias]
+                row["routing_resistance_ohm"] = row["resistance_ohm"]
+                row["strap_resistance_ohm"] = internal["resistance_ohm"]
+                row["resistance_ohm"] += internal["resistance_ohm"]
         metrics["magic_drc"] = magic_drc(
             pdk, out / "route/final.gds", spec.top, out / "magic"
         )

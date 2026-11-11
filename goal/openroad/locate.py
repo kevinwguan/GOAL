@@ -2,7 +2,7 @@
 
 import os
 import shutil
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 
@@ -13,6 +13,7 @@ class Toolchain:
     tech_lef: Path
     klayout_tech: Path | None = None
     rc_rules: Path | None = None
+    gds_layers: dict = field(default_factory=dict)
 
 
 def locate(pdk) -> Toolchain:
@@ -47,4 +48,18 @@ def locate(pdk) -> Toolchain:
         asset("TECH_LEF", "tech_lef", True),
         asset("KLAYOUT_TECH", "klayout_tech"),
         asset("RCX_RULES", "rc_rules"),
+        {
+            **{
+                name: pdk.layer(generic)
+                for generic, name in pdk.data["lef_layers"].items()
+            },
+            **{
+                name: pdk.layer(generic)
+                for generic, name in pdk.data["lef_vias"].items()
+            },
+            **{
+                name: pdk.layer(generic)
+                for generic, name in pdk.data.get("stream_layers", {}).items()
+            },
+        },
     )

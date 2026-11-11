@@ -9,7 +9,7 @@ from .geometry import port, rect
 from .mosfet import mosfet
 
 
-def diffpair(pdk: PDK) -> gf.Component:
+def diffpair(pdk: PDK, strapped: bool = False) -> gf.Component:
     """Two four-finger NMOS devices with a shared guard-ring bulk rail."""
     c = gf.Component()
     bulk_boxes = []
@@ -22,6 +22,7 @@ def diffpair(pdk: PDK) -> gf.Component:
             gate="gate_" + side,
             bulk="bulk",
             name=None,
+            strapped=strapped,
         )
         ref = c << cell
         x = (
@@ -35,14 +36,31 @@ def diffpair(pdk: PDK) -> gf.Component:
             if pin.name == "B":
                 bulk_boxes.append(box)
             else:
-                port(
+                copied = port(
                     c,
                     pdk,
                     side + "_" + pin.name,
                     pin.info["net"],
                     box,
+                    layer=pin.info["generic_layer"],
                     orientation=pin.orientation,
                 )
+                if pin.info.get("terminal_only", False):
+                    copied.info["terminal_only"] = True
+    if strapped:
+        boxes = [
+            port_box(p)
+            for p in c.ports
+            if p.info["net"] == "tail" and not p.info.get("terminal_only", False)
+        ]
+        bridge = (
+            min(b[0] for b in boxes),
+            boxes[0][1],
+            max(b[2] for b in boxes),
+            boxes[0][3],
+        )
+        rect(c, pdk, "met2", bridge)
+        port(c, pdk, "tail_bridge", "tail", bridge, layer="met2")
     rail = (
         min(b[0] for b in bulk_boxes),
         min(b[1] for b in bulk_boxes),

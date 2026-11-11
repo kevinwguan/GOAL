@@ -14,7 +14,7 @@ def obstructions(component, pdk, coarse: bool = False) -> dict[str, list[tuple]]
     polygons = component.get_polygons(by="tuple")
     dbu = component.kcl.dbu
     result = {}
-    for layer in pdk.data["lef_layers"]:
+    for layer in pdk.data["lef_layers"] | pdk.data.get("obs_layers", {}):
         fixed = kdb.Region()
         for polygon in polygons.get(pdk.layer(layer), []):
             fixed.insert(polygon)
@@ -24,7 +24,9 @@ def obstructions(component, pdk, coarse: bool = False) -> dict[str, list[tuple]]
             fixed = kdb.Region(fixed.bbox())
         exposed = kdb.Region()
         for pin in component.ports:
-            if pin.info["generic_layer"] == layer:
+            if pin.info["generic_layer"] == layer and not pin.info.get(
+                "terminal_only", False
+            ):
                 exposed.insert(kdb.Box(*(round(v / dbu) for v in port_box(pin))))
         rectangles = []
         for polygon in (
