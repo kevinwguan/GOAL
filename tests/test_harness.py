@@ -6,6 +6,7 @@ import klayout.db as kdb
 import pytest
 
 from goal.harness import PadLibrary, build_ring, check_ring, sky130_example
+from goal.harness.manifest import BUSES
 from goal.pdk import PDK
 
 
@@ -36,7 +37,25 @@ def test_sky130_ring(tmp_path):
         assert intervals[0][0] == expected_start
         assert sum(b - a for a, b in intervals) == 600
     result = check_ring(meta, pdk, out)
-    assert len(result["connectivity"]) == 14  # 12 buses and two tie networks.
+    # Chosen power pads physically join quiet/main IO rails, declared by spec.
+    assert len(result["connectivity"]) == 12  # Ten bus aliases and two tie networks.
+    assert {t["bus"] for t in meta["bus_terminals"]} == set(BUSES)
+    assert not spec.strap_buses
+    assert set(meta["declared_empty_source_cells"]) == {
+        "sky130_fd_pr__gendlring__example_559591418081"
+    }
+    # Independently compare every conductor purpose in the assembled selected
+    # native source hierarchy with the component imported into GDSFactory.
+    for cell in lib.cache.values():
+        original = lib.layout.cell(cell.name)
+        imported = cell.component
+        for index in lib.layout.layer_indices():
+            info = lib.layout.get_info(index)
+            actual = kdb.Region(
+                imported.begin_shapes_rec(imported.kcl.layout.layer(info))
+            )
+            expected = kdb.Region(original.begin_shapes_rec(index))
+            assert (actual ^ expected).is_empty(), (cell.name, info)
     assert result["lef_exit"] == 0 and not result["lef_errors"]
     assert result["ring_drc"]["count"] >= 0
     assert (

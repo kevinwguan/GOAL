@@ -27,6 +27,8 @@ class Pad:
     net: str
     core_pin: str | None = None
     bindings: dict[str, str] = field(default_factory=dict)
+    ties: dict[str, str] = field(default_factory=dict)
+    gap_after_um: int = 0
 
 
 @dataclass(frozen=True)
@@ -38,7 +40,8 @@ class RingSpec:
     fillers: tuple[int, ...] = (20, 10, 5, 1)
     bus_alignment_pin: str = "AMUXBUS_A"
     reference_filler: str = PREFIX + "com_bus_slice_20um"
-    strap_buses: bool = True
+    bus_aliases: dict[str, str] = field(default_factory=dict)
+    strap_buses: bool = False
     bridge_buses: tuple[str, ...] = BUSES
     return_bridge: dict = field(
         default_factory=lambda: dict(
@@ -103,13 +106,59 @@ def sky130_example() -> RingSpec:
             Pad("north", 0, p + "analog_pad", "inp", "P_CORE"),
             Pad("north", 1, p + "analog_pad", "inn", "P_CORE"),
             Pad("north", 2, p + "analog_pad", "bias", "P_CORE"),
-            Pad("north", 3, p + "vdda_hvc_clamped_pad", "VDDA", "VDDA"),
+            Pad(
+                "north",
+                3,
+                p + "vdda_hvc_clamped_pad",
+                "VDDA",
+                "VDDA",
+                {"VDDA_PAD": "VDDA"},
+            ),
             Pad("east", 0, p + "analog_pad", "out", "P_CORE"),
-            Pad("east", 1, p + "vddio_hvc_clamped_pad", "VDDIO", "VDDIO"),
-            Pad("east", 2, p + "gpiov2_pad_wrapped", "digital_in", "IN", bindings),
-            Pad("south", 0, p + "vssa_hvc_clamped_pad", "VSSA", "VSSA"),
-            Pad("south", 1, p + "vssd_lvc_clamped_pad", "VSSD", "VSSD"),
-            Pad("west", 0, p + "vccd_lvc_clamped_pad", "VCCD", "VCCD"),
-            Pad("west", 1, p + "vssio_hvc_clamped_pad", "VSSIO", "VSSIO"),
+            Pad(
+                "east",
+                1,
+                p + "vddio_hvc_clamped_pad",
+                "VDDIO",
+                "VDDIO",
+                {"VDDIO_PAD": "VDDIO"},
+            ),
+            Pad("east", 2, p + "gpiov2_pad_wrapped", "digital_in", "IN", ties=bindings),
+            Pad(
+                "south",
+                0,
+                p + "vssa_hvc_clamped_pad",
+                "VSSA",
+                "VSSA",
+                {"VSSA_PAD": "VSSA"},
+            ),
+            Pad(
+                "south",
+                1,
+                p + "vssd_lvc_clamped_pad",
+                "VSSD",
+                "VSSD",
+                {"VSSD_PAD": "VSSD"},
+            ),
+            # Native clamp metal extends 11.195um past the LEF width.
+            # This declared filler separates it from the next supply pad.
+            Pad(
+                "west",
+                0,
+                p + "vccd_lvc_clamped_pad",
+                "VCCD",
+                "VCCD",
+                {"VCCD_PAD": "VCCD"},
+                gap_after_um=20,
+            ),
+            Pad(
+                "west",
+                1,
+                p + "vssio_hvc_clamped_pad",
+                "VSSIO",
+                "VSSIO",
+                {"VSSIO_PAD": "VSSIO"},
+            ),
         ),
+        bus_aliases={"VDDIO_Q": "VDDIO", "VSSIO_Q": "VSSIO"},
     )

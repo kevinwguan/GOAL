@@ -9,7 +9,7 @@ from pathlib import Path
 from goal.openroad.metrics import scrub
 
 
-def magic_drc(pdk, gds: Path, top: str, out_dir: Path) -> dict:
+def magic_drc(pdk, gds: Path, top: str, out_dir: Path, timeout: float = 180) -> dict:
     """Run drc(full), or explicitly record why it was not tested."""
     if not Path(gds).is_file():
         raise FileNotFoundError(gds)
@@ -39,7 +39,7 @@ quit -noprompt
         cwd=out_dir,
         capture_output=True,
         text=True,
-        timeout=180,
+        timeout=timeout,
     )
     log = scrub(proc.stdout + proc.stderr, {str(Path.home()): "$HOME"})
     (out_dir / "magic.log").write_text(log)

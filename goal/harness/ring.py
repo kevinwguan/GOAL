@@ -71,7 +71,10 @@ def build_ring(spec: RingSpec, pdk, out: Path) -> dict:
             native = pin.info["pad_pin"]
             box = port_box(pin)
             alias = bindings.get(
-                native, native if native in BUSES else f"{name}_{native}"
+                native,
+                spec.bus_aliases.get(native, native)
+                if native in BUSES
+                else f"{name}_{native}",
             )
             transformed.append(
                 dict(
@@ -118,7 +121,8 @@ def build_ring(spec: RingSpec, pdk, out: Path) -> dict:
                 terminals.append(
                     dict(
                         name=f"{name}_{native}_{j}",
-                        net=native,
+                        net=spec.bus_aliases.get(native, native),
+                        bus=native,
                         layer=layer,
                         box=list(sample),
                     )
@@ -163,16 +167,24 @@ def build_ring(spec: RingSpec, pdk, out: Path) -> dict:
         )
         if len({p.order for p in entries}) != len(entries):
             raise ValueError(f"Duplicate order on {side}")
-        cells = [(lib.load(p.cell), p) for p in entries]
-        gap = span - sum(c.width for c, p in cells)
-        if gap < 0 or abs(gap - round(gap)) > 1e-6:
-            raise ValueError(f"Unfillable {side} gap {gap}")
-        remaining = round(gap)
-        for size in spec.fillers:
-            count, remaining = divmod(remaining, size)
-            cells += [(lib.load(PREFIX + f"com_bus_slice_{size}um"), None)] * count
-        if remaining:
-            raise ValueError(f"Fillers cannot cover {side}")
+
+        def filler_cells(length):
+            if length < 0 or abs(length - round(length)) > 1e-6:
+                raise ValueError(f"Unfillable {side} gap {length}")
+            remaining = round(length)
+            result = []
+            for size in spec.fillers:
+                count, remaining = divmod(remaining, size)
+                result += [(lib.load(PREFIX + f"com_bus_slice_{size}um"), None)] * count
+            if remaining:
+                raise ValueError(f"Fillers cannot cover {side}")
+            return result
+
+        cells = []
+        for pad in entries:
+            cells.append((lib.load(pad.cell), pad))
+            cells.extend(filler_cells(pad.gap_after_um))
+        cells.extend(filler_cells(span - sum(c.width for c, _ in cells)))
         cursor = 0
         intervals = []
         # Rotate longitudinal and transverse offsets in the native pad frame.
@@ -182,7 +194,7 @@ def build_ring(spec: RingSpec, pdk, out: Path) -> dict:
             delta = baseline - line
             rotation = kdb.DCplxTrans(1, angle, False, 0, 0)
             offset = rotation * kdb.DPoint(cursor, delta)
-            bindings = dict(pad.bindings) if pad else {}
+            bindings = (pad.bindings | pad.ties) if pad else {}
             if pad and pad.core_pin:
                 bindings[pad.core_pin] = pad.net
                 if pad.core_pin == "P_CORE":
@@ -212,7 +224,7 @@ def build_ring(spec: RingSpec, pdk, out: Path) -> dict:
                     dict(spec.return_bridge, net=spec.bridge_buses[bridge_count]),
                 )
                 bridge_count += 1
-            if pad and pad.bindings:
+            if pad and pad.ties:
                 from .ties import distribute
 
                 tie_terminals.extend(
@@ -220,7 +232,7 @@ def build_ring(spec: RingSpec, pdk, out: Path) -> dict:
                         ring,
                         cell,
                         ref.dcplx_trans,
-                        pad.bindings,
+                        pad.ties,
                         spec.tie_geometry,
                         pdk,
                     )
@@ -250,17 +262,20 @@ def build_ring(spec: RingSpec, pdk, out: Path) -> dict:
         bus_terminals=terminals,
         tie_terminals=tie_terminals,
         abutments=abutments,
+        library_sources=lib.sources,
+        declared_empty_source_cells=sorted(lib.empty_sources),
         sources={
             name: dict(gds=str(cell.gds.relative_to(lib.root)), sha256=cell.sha256)
             for name, cell in lib.cache.items()
         },
     )
+    from .abstract import physical_access, write_core_abstract
+
+    physical_access(metadata, pdk, out / "pad_ring.gds")
     (out / "manifest.json").write_text(json.dumps(metadata, indent=2) + "\n")
     (out / "chip_aliases.json").write_text(
         json.dumps({t["name"]: t["net"] for r in records for t in r["ports"]}, indent=2)
         + "\n"
     )
-    from .abstract import write_core_abstract
-
     write_core_abstract(metadata, pdk, out)
     return metadata

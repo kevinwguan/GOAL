@@ -57,9 +57,13 @@ def merge_gds(
         ):
             cell.clear()
     macro_names = []
+    source_empty = set()
     for path in [*macro_gds, *(stdcell_gds or [])]:
         source = kdb.Layout()
         source.read(str(path))
+        source_empty.update(cell.name for cell in source.each_cell() if cell.is_empty())
+        if any(cell.is_empty() for cell in source.top_cells()):
+            raise ValueError(f"Empty source GDS top in {path}")
         if path in macro_gds:
             macro_names += [cell.name for cell in source.top_cells()]
         for source_top in source.top_cells():
@@ -70,8 +74,9 @@ def merge_gds(
     top = final.create_cell(top_name)
     top.copy_tree(layout.cell(top_name))
     empty = [cell.name for cell in final.each_cell() if cell.is_empty()]
-    if empty:
-        raise ValueError(f"Missing GDS geometry for cells: {empty}")
+    missing = sorted(set(empty) - source_empty)
+    if missing:
+        raise ValueError(f"Missing GDS geometry for cells: {missing}")
     for name in macro_names:
         if final.cell(name) is None:
             raise ValueError(f"Final GDS lacks macro {name}")
@@ -80,4 +85,9 @@ def merge_gds(
     check.read(str(output))
     if check.top_cell().name != top_name:
         raise ValueError("Final GDS top-cell verification failed")
-    return dict(top=top_name, macros=macro_names, cells=check.cells())
+    return dict(
+        top=top_name,
+        macros=macro_names,
+        cells=check.cells(),
+        source_empty_cells=sorted(set(empty) & source_empty),
+    )

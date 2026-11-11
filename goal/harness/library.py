@@ -9,6 +9,8 @@ from pathlib import Path
 import gdsfactory as gf
 import klayout.db as kdb
 
+from .sources import declared_cells
+
 
 @dataclass
 class PadCell:
@@ -33,11 +35,22 @@ class PadLibrary:
         self.text = (self.root / "lef/sky130_ef_io.lef").read_text()
         self.cache = {}
         self.gds_index = {}
+        self.layout = kdb.Layout()
+        self.sources = {}
+        self.declared = set()
+        self.empty_sources = set()
         for path in sorted((self.root / "gds").glob("*.gds")):
             layout = kdb.Layout()
             layout.read(str(path))
+            self.declared.update(declared_cells(path))
+            self.layout.read(str(path))
+            self.sources[str(path.relative_to(self.root))] = hashlib.sha256(
+                path.read_bytes()
+            ).hexdigest()
             for cell in layout.each_cell():
-                if cell.name not in self.gds_index or path.stem == cell.name:
+                if not cell.is_empty() and (
+                    cell.name not in self.gds_index or path.stem == cell.name
+                ):
                     self.gds_index[cell.name] = path
 
     def load(self, name: str) -> PadCell:
@@ -88,7 +101,25 @@ class PadLibrary:
                     raise ValueError(f"Unsupported pad pin primitive {record[4]}")
             pins.setdefault(pin_name, []).extend(shapes)
         path = self.gds_index[name]
-        imported = gf.import_gds(path, cellname=name)
+        # Library files contain cross-file references. Resolve the complete
+        # supplied library before copying the chosen hardened tree unchanged.
+        native = self.layout.cell(name)
+        reachable = {native.cell_index(), *native.called_cells()}
+        empty = [
+            self.layout.cell(i).name
+            for i in reachable
+            if self.layout.cell(i).is_empty()
+            and self.layout.cell(i).name not in self.declared
+        ]
+        if empty:
+            raise ValueError(f"Unresolved pad GDS dependencies: {empty}")
+        self.empty_sources.update(
+            self.layout.cell(i).name
+            for i in reachable
+            if self.layout.cell(i).is_empty()
+        )
+        imported = gf.Component()
+        imported.copy_tree(native)
         c = gf.Component()
         c << imported
         for pin_name, shapes in pins.items():

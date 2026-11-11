@@ -27,20 +27,20 @@ def check_ring(meta: dict, pdk, out: Path) -> dict:
     counts = Counter(r["cell"] for r in meta["instances"])
     baseline = {}
     for cell, multiplicity in counts.items():
-        source = library.load(cell)
+        library.load(cell)
         baseline_dir = out / "magic_baseline" / cell
         baseline_dir.mkdir(parents=True, exist_ok=True)
-        original = kdb.Layout()
-        original.read(str(source.gds))
         single = kdb.Layout()
-        single.dbu = original.dbu
-        single.create_cell(cell).copy_tree(original.cell(cell))
+        single.dbu = library.layout.dbu
+        single.create_cell(cell).copy_tree(library.layout.cell(cell))
         standalone = baseline_dir / "standalone.gds"
         single.write(str(standalone))
         baseline[cell] = magic_drc(pdk, standalone, cell, baseline_dir) | dict(
             instances=multiplicity
         )
-    ring = magic_drc(pdk, out / "pad_ring.gds", meta["top"], out / "magic_ring")
+    ring = magic_drc(
+        pdk, out / "pad_ring.gds", meta["top"], out / "magic_ring", timeout=600
+    )
     inherited = sum(r["count"] * r["instances"] for r in baseline.values())
     tools = locate(pdk)
     script = out / "read_lef.tcl"

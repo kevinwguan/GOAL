@@ -7,12 +7,14 @@ from pathlib import Path
 
 from goal.lef import write_abstract
 from goal.lef.defports import routed_component
+from goal.lef.ports import port_box
 from goal.lef.verilog import write_wrapper
 from goal.openroad import FlowSpec, locate, run
 from goal.openroad.gds import merge_gds
 from goal.pdk import PDK
 from goal.place import parse_spice, tile
 from goal.signoff import magic_drc
+from goal.signoff.connectivity import Connectivity, macro_terminals
 
 
 def build(out: Path, pdk_name: str = "sky130A") -> dict:
@@ -67,6 +69,17 @@ def build(out: Path, pdk_name: str = "sky130A") -> dict:
         out / "route/final.gds",
     )
     component = routed_component(out / "route/routed.def", out / "route/final.gds", pdk)
+    terminals = macro_terminals(meta, (40, 40))
+    terminals += [
+        dict(
+            name=p.name,
+            net=p.name,
+            layer=p.info["generic_layer"],
+            box=list(port_box(p)),
+        )
+        for p in component.ports
+    ]
+    result["connectivity"] = Connectivity(out / "route/final.gds", pdk).check(terminals)
     hardened = write_abstract(
         component,
         pdk,

@@ -28,12 +28,15 @@ class FlowSpec:
     die: tuple[float, float, float, float] = (0, 0, 120, 100)
     core: tuple[float, float, float, float] = (1, 1, 119, 99)
     placements: dict[str, tuple[float, float]] = field(default_factory=dict)
+    peripheral_placements: dict[str, tuple[float, float]] = field(default_factory=dict)
     io_pins: dict[str, tuple[float, float]] = field(default_factory=dict)
     routing_layers: tuple[str, str] = ("met1", "met5")
     io_layer: str = "met2"
     io_size: float | None = None
     placed_def: Path | None = None
     auto_place: bool = False
+    place_io: bool = True
+    allow_global_congestion: bool = False
     site: str | None = None
     timeout: float = 300
     threads: int = 1
@@ -107,12 +110,26 @@ def generate(spec: FlowSpec, tools: Toolchain, out_dir: Path) -> tuple[str, str]
             lines.append(
                 f"[[ord::get_db_block] findInst {identifier(name)}] setPlacementStatus LOCKED"
             )
+        # Peripheral masters may span the die while ordinary macros remain
+        # subject to place_macro's core/site checks. Validate their actual bbox
+        # against the declared die instead of enlarging the floorplan core.
+        for name, (x, y) in spec.peripheral_placements.items():
+            lines += [
+                f"set peripheral [[ord::get_db_block] findInst {identifier(name)}]",
+                'if {$peripheral == "NULL"} { error "Missing peripheral instance" }',
+                "$peripheral setOrient R0",
+                f"$peripheral setLocation [ord::microns_to_dbu {x}] [ord::microns_to_dbu {y}]",
+                "set bbox [$peripheral getBBox]",
+                "set die [[ord::get_db_block] getDieArea]",
+                'if {[$bbox xMin] < [$die xMin] || [$bbox yMin] < [$die yMin] || [$bbox xMax] > [$die xMax] || [$bbox yMax] > [$die yMax]} { error "Peripheral instance exceeds die" }',
+                "$peripheral setPlacementStatus LOCKED",
+            ]
         if spec.io_pins:
             for name, (x, y) in spec.io_pins.items():
                 lines.append(
                     f"place_pin -pin_name {identifier(name)} -layer {identifier(spec.io_layer)} -location {{{x} {y}}} -pin_size {{{io_size} {io_size}}} -placed_status"
                 )
-        else:
+        elif spec.place_io:
             directions = []
             for layer, body in re.findall(
                 r"^LAYER (\S+)\s*$(.*?)^END \1\s*$",
@@ -142,9 +159,10 @@ def generate(spec: FlowSpec, tools: Toolchain, out_dir: Path) -> tuple[str, str]
     lo, hi = map(identifier, spec.routing_layers)
     if spec.placed_def:
         lines.append("make_tracks")
+    congestion = " -allow_congestion" if spec.allow_global_congestion else ""
     lines += [
         f"set_routing_layers -signal {lo}-{hi}",
-        f"global_route -congestion_iterations 50 -guide_file {quote(out / 'global.guide')}",
+        f"global_route -congestion_iterations 50{congestion} -congestion_report_file {quote(out / 'global_congestion.rpt')} -guide_file {quote(out / 'global.guide')}",
         f"detailed_route -output_drc {quote(out / 'detailed.drc')}",
         f"write_def {quote(out / 'routed.def')}",
     ]
