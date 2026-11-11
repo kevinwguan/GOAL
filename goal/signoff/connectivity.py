@@ -5,6 +5,14 @@ from pathlib import Path
 import klayout.db as kdb
 
 
+def conducting_region(layout, top, pdk, layer):
+    """Union drawing/pin purposes explicitly declared by the PDK input deck."""
+    region = kdb.Region()
+    for purpose in [layer] + pdk.data.get("conductor_purposes", {}).get(layer, []):
+        region += kdb.Region(top.begin_shapes_rec(layout.layer(*pdk.layer(purpose))))
+    return region.merged()
+
+
 class Connectivity:
     """Extract physical conductors without labels or implicit logical shorts."""
 
@@ -18,9 +26,7 @@ class Connectivity:
         self.layers = {}
         stack = pdk.data["connectivity"]
         for name in stack["conductors"] + [v[1] for v in stack["vias"]]:
-            region = kdb.Region(
-                self.top.begin_shapes_rec(self.layout.layer(*pdk.layer(name)))
-            )
+            region = conducting_region(self.layout, self.top, pdk, name)
             self.extractor.register(region, name)
             self.layers[name] = region
             self.extractor.connect(region)

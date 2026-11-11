@@ -3327,5 +3327,25 @@
   },
   "obs_layers": {
     "local": "li1"
+  },
+  "conductor_purposes": {
+    "met1": [
+      "native.met1.pin"
+    ],
+    "met2": [
+      "native.met2.pin"
+    ],
+    "met3": [
+      "native.met3.pin"
+    ],
+    "met4": [
+      "native.met4.pin"
+    ],
+    "met5": [
+      "native.met5.pin"
+    ],
+    "local": [
+      "native.li1.pin"
+    ]
   }
 }
