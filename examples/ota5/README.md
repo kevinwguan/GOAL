@@ -13,8 +13,10 @@ are the six external nets. The routed GDS is imported and re-abstracted into
 `hardened/goal_ota5.{lef,gds,json}` and `goal_ota5_bb.v`. This is reusable
 physical macro packaging, with block LVS and analog performance not tested.
 
-The tested sky130A run measures 529um, 41 vias, zero detailed-route DRC and
+The tested sky130A run measures 528um, 39 vias, zero detailed-route DRC and
 zero Magic drc(full) errors on the hardened macro. The ordering is an exact
-single-path cover. Fingers remain separate physical islands before routing;
+single-path cover. Metal/via extraction checks the original device landings
+and all routed IOs before hardening. The [chip example](../chip_sky130/README.md)
+then places this fixed macro inside the manifest-defined harness. Fingers remain separate physical islands before routing;
 no diffusion sharing is asserted. Physical passive PCells and mixed-bulk
 well groups are unsupported. See [ENGINE.md](../../docs/ENGINE.md).

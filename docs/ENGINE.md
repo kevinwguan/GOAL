@@ -3,8 +3,8 @@
 GOAL (GDSFactory OpenROAD Automated Layout) turns GDSFactory components into
 portable LEF/GDS/Verilog artifacts and assembles them with local OpenROAD.
 This is a clean-room implementation built from the reproducibility branch,
-not the authors' original generator. All G1–G6 phases, including both G5
-stretch examples, were implemented locally. No paper sources or measurement
+not the authors' original generator. It includes guarded primitives, OTA
+hardening and a manifest-defined Sky130 pad harness. No paper sources or measurement
 oracle files were changed.
 
 ## Install and tools
@@ -47,11 +47,15 @@ goal lef --pdk sky130A --mode per_finger --out build/abstract
 goal flow examples/diffpair_capillary/flow.py --out build/sky130
 goal flow examples/diffpair_capillary/gf180.py --out build/gf180
 python examples/ota5/build.py --out build/ota5
+python -m goal.harness --out build/ring
+python examples/chip_sky130/build.py --out build/chip
 pytest -q
 python3 capillary_experiment/verify.py
 ```
 
-`python -m goal` also works. Every run needs a fresh output directory; prior
+`python -m goal` also works. Pytest adds the checkout root to its import path,
+so a dependency-equipped fresh checkout supports plain `pytest` without an
+editable install. Every run needs a fresh output directory; prior
 results are preserved. Keep generated outputs under ignored `build/` or `out/`.
 Full routing tests are marked `openroad`. They skip when discovery is absent;
 when OPENROAD is explicitly configured, discovery failures fail the tests.
@@ -66,6 +70,7 @@ Magic tests skip without Magic/PDK_ROOT and otherwise run the installed
 | 3.2 | Diffusion graph, path cover, well-group tiling | `goal/place/` | `reproduction/placement.py` |
 | 3.3, Fig. 3 | Port rectangles, pins, OBS, GDS and netlists | `goal/lef/` | `reproduction/lef.py`, extended for transformed rectangles |
 | 3.4 | Tool discovery, FlowSpec, routing, RCX and GDS assembly | `goal/openroad/` | `reproduction/scripts/route_independent.py`; GDS strategy follows ORFS `def2stream.py` |
+| 3.5 | Hardened pad ingestion, manifest composition and core abstracts | `goal/harness/` | Supplied PDK LEF/GDS; no ORFS design or private generator sources |
 | 4.4 | Three-mode experiment, SPEF measurement | `goal/flow.py`, `goal/rc.py` | Independent floorplan policy and `reproduction/rc.py` |
 
 Sources were copied read-only from `repro-methodology` into this package,
@@ -118,9 +123,10 @@ Identifiers use `[A-Za-z_][A-Za-z0-9_]*` for portable Verilog/LEF/DEF/Tcl.
 `merged` emits one PIN per logical net with all its access rectangles;
 `per_finger` emits one PIN per component port. The four-finger pair has
 6 merged pins or 19 per-finger pins: 4+4 drain, 8 tail, 2 gate, 1 bulk.
-The oracle conventional abstract instead uses six solid bounding rectangles;
-our merged mode retains all 19 physical access rectangles under six pins.
-The structural tests assert this deliberate difference.
+The unstrapped merged abstract retains the 19 separate access rectangles
+under six pins. The runnable conv vehicle instead exposes its connected M2
+source/drain straps. The oracle uses six solid bounding rectangles; these are
+deliberately different physical geometries.
 
 `cap_split` is a wrapper choice, not a LEF mode. Call
 `goal.lef.verilog.write_wrapper(..., cap_split=True)` to give each physical
@@ -144,7 +150,10 @@ placed DEF, timeout and thread count. Default runs use one thread. Sizes and
 coordinates are micrometres. Single macros are LOCKED (DEF FIXED). Multiple
 specified placements are supported; `auto_place=True` requests
 `rtl_macro_placer`. With no explicit IO coordinates the backend calls
-`place_pins`. Technology SITE rows are used for floorplan initialization.
+`place_pins`; `place_io=False` disables top IO placement.
+`peripheral_placements` fixes full-die peripheral masters directly through
+OpenDB and checks their actual bbox against the die. Ordinary `placements`
+retain core/site checks. Technology SITE rows are used for floorplan initialization.
 Default square IO size satisfies the technology LEF WIDTH and AREA rules,
 rounded upward on a 5nm construction grid.
 
@@ -177,11 +186,17 @@ DRC count, elapsed runtime, extraction method, warnings/errors and exit state.
 Missing measurements are null, not invented zeros. Logs scrub private paths;
 local Tcl scripts retain actual paths to be executable. Failed/timeout attempts
 retain diagnostic logs. The lower-level route CLI emits routing products;
-`goal flow` and the OTA example additionally assemble final GDS and run Magic.
+`goal flow`, OTA and chip examples additionally assemble final GDS and run Magic.
+`allow_global_congestion` defaults to false. The chip explicitly enables it:
+the VSSA pin has zero-capacity coarse bins even though detailed routing closes.
+`global_congestion.rpt` and the warning are retained; detailed-route DRC and
+final-GDS connectivity remain required.
 
 Final GDS uses the platform KLayout `.lyt`, matches DEF units, clears LEF
 placeholders, loads macro/optional standard-cell GDS, preserves routed vias,
-and copies the routed top hierarchy. Missing/empty cells fail. It reopens the
+and copies the routed top hierarchy. Missing macro geometry fails. Empty
+leaf structures explicitly present in source GDS are preserved and reported
+in `source_empty_cells`; empty source tops are rejected. It reopens the
 written GDS and checks the macro cells exist. `routed_component` supports the
 N-oriented single-rectangle IO pads emitted here; unsupported DEF pin geometry
 fails rather than guessing. This permits a routed OTA to become a new macro.
@@ -197,21 +212,38 @@ Both platforms use their installed OpenRCX rules, not the oracle's estimated RC.
 
 | PDK | mode | wirelength um | vias | route DRC | Magic full DRC | drain_p R ohm | tail R ohm |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| sky130A | conv | 318 | 10 | 0 | 0 | 60.1364 | 56.7086 |
+| sky130A | conv | 314 | 9 | 0 | 0 | 58.0484 | 52.6406 |
 | sky130A | cap | 351 | 11 | 0 | 0 | 59.1939 | 54.1526 |
 | sky130A | cap_split | 889 | 23 | 0 | 0 | 14.3198 | 6.54297 |
-| gf180mcuD | conv | 316 | 10 | 0 | 0 | 20.0140 | 19.6434 |
+| gf180mcuD | conv | 309 | 7 | 0 | 0 | 16.3737 | 14.7152 |
 | gf180mcuD | cap | 357 | 11 | 0 | 0 | 19.9448 | 17.5224 |
 | gf180mcuD | cap_split | 905 | 27 | 0 | 0 | 4.96403 | 2.33479 |
 
-Measured conv/split R ratios (drain_p/drain_n/tail) are
-4.19953/4.13215/8.66710 on sky130A and 4.03181/3.46240/8.41334 on GF180.
+Conv/split R ratios (drain_p/drain_n/tail) are now
+4.05372/3.98723/8.04536 on sky130A and 3.29846/2.77487/6.30257 on GF180.
+The new conv includes its internal strap R; cap and cap_split remain unstrapped.
+The measured change from the former, electrically open conv baseline is:
+
+| PDK | quantity | old conv | strapped conv |
+| --- | --- | ---: | ---: |
+| sky130A | wirelength / vias | 318 / 10 | 314 / 9 |
+| sky130A | drain_p / drain_n / tail R, ohm | 60.1364 / 59.5013 / 56.7086 | 58.0484 / 57.4144 / 52.6406 |
+| sky130A | conv/split drain_p / drain_n / tail | 4.19953 / 4.13215 / 8.66710 | 4.05372 / 3.98723 / 8.04536 |
+| gf180mcuD | wirelength / vias | 316 / 10 | 309 / 7 |
+| gf180mcuD | drain_p / drain_n / tail R, ohm | 20.0140 / 20.0935 / 19.6434 | 16.3737 / 16.1036 / 14.7152 |
+| gf180mcuD | conv/split drain_p / drain_n / tail | 4.03181 / 3.46240 / 8.41334 | 3.29846 / 2.77487 / 6.30257 |
+
+Old and new detailed-route DRC counts are zero. Earlier Magic zero counts used
+incorrectly mapped streams; the corrected streams in the current table are
+freshly measured. All finger/IO terminals pass physical connectivity in all six
+current flows. A regression rejects the former unstrapped merged macro.
+
 For context, Table 3's different routing-only macro gives wirelength
 153/165/605um, vias 6/6/25, drain_p R 36.1/27.4/9.1ohm and tail R
 29.1/23.8/4.7ohm (conv/split ratios approximately 3.97 and 6.19).
 Those are not equality targets for this geometry or extraction method.
 
-The sky130A 5T OTA measures 529um, 41 vias, zero route DRC and zero Magic
+The sky130A 5T OTA measures 528um, 39 vias, zero route DRC and zero Magic
 errors after re-abstraction. It has six external nets and internally routed
 n1/tail nets. Block LVS and analog performance are not tested.
 
@@ -229,6 +261,11 @@ Copy one PDK JSON and change `name`, layer pairs/provenance, scalar rule values,
 Keep rules out of cell modules. Use `PDK.verify()` with PDK_ROOT to validate
 layer pairs, and `validate_lef()` to check platform names. Test both MOS
 polarities with the installed Magic deck before claiming primitive support.
+Declare the `connectivity` conductor/via stack, `lef_vias` and `stream_layers`
+for final-GDS extraction/streaming, and any non-routing `obs_layers`. Add
+`conductor_purposes` only when the actual PDK input deck treats that purpose
+as physical metal; labels never join nets. The strap model additionally needs
+tech-LEF sheet resistance and a documented typical via resistance.
 
 A new cell needs fixed polygons plus electrical ports following the metadata
 contract. Use rule values for process-specific dimensions and the shared grid
@@ -254,13 +291,11 @@ columns for a requested group aspect. Whole-block aspect may differ.
 Individual isolated fingers and guard rings are retained; diffusion is not
 physically shared. Mixed-bulk groups and unimplemented physical passives fail.
 
-Merged LEF assumes all access shapes of one PIN are electrically connected
-inside the macro. The built-in isolated fingers do not add internal source/drain
-straps: conventional mode is an abstraction experiment, not an LVS-verified
-hardened transistor. Per-finger alias routing provides those external wires.
-The OTA uses per-finger internal routing before re-abstraction. None of these
-results establishes transistor/block LVS, matching, electrical specifications,
-antenna/density closure or foundry signoff.
+Merged LEF requires internally connected access shapes. Conv uses the
+strapped variant; cap modes and the OTA connect isolated fingers through
+external routing. The OTA is checked before hardening and its original device
+landings are checked again in the assembled chip. These metal/via checks do
+not establish transistor/block LVS, matching or electrical specifications.
 
 The installed GF180 Magic deck warns that `ndiff_missing_pwell` and
 `mvndiff_missing_pwell` CIF layers are unknown; reported zero counts reflect
@@ -278,14 +313,12 @@ created, preserving the planned paper-artifacts README destination.
 
 ## Verification record
 
-The final configured suite passes 37 tests, including both PDKs' three-mode
-routes, all four primitive Magic checks, transformed ports, obstruction pin
-holes, Verilog/DEF input, two-macro automatic placement/IO with estimated RC,
-and OTA hardening. The capillary oracle remains PASS. Ruff lint/format and
-whitespace checks pass. The installable wheel includes both PDK tables; the
-installed `goal` entry point was exercised for help, LEF emission and routing.
-All new Python modules are below 400 lines. New tracked files contain no
-machine-specific home paths, generated outputs or files above 1MB.
+The configured suite passes **43 tests**, covering both PDKs' three-mode flows, primitive Magic
+checks, transformed ports, obstruction holes, Verilog/DEF input, automatic
+placement/IO, OTA hardening, complete-library pad ingestion and the routed chip.
+See the example READMEs for current measurements. The capillary oracle,
+Ruff lint/format and whitespace checks are required. Modules stay below 400
+lines; generated outputs and tool environments remain ignored.
 
 ### Physical conventional baseline (H1)
 
@@ -316,3 +349,92 @@ the other boundary. Multiple disconnected apertures are rejected. This is
 a 1D resistance approximation; current spreading, FEOL/contact R, gate/bulk
 internal R and internal capacitance are excluded. It is not field extraction
 or electrical signoff. Cap/split still use routing-only OpenRCX R.
+
+
+## Harness manifest and chip assembly (§3.5)
+
+`python -m goal.harness --out build/ring` builds and checks `sky130_example()`.
+The `RingSpec` defines die `(1004, 1004)` and core `(180, 180, 824, 824)` in um.
+Each `Pad(side, order, cell, net, core_pin, bindings={}, ties={}, gap_after_um=0)`
+selects a hardened master and maps its native pins to chip nets. `bindings`
+only names connections; `ties` explicitly requests the M2/M3 GPIO tie wiring.
+`gap_after_um` inserts declared common-bus filler widths immediately after a
+pad. VCCD requests 20um because its GDS protrudes 11.195um past its LEF width;
+placing VSSIO immediately after it causes real supply shorts. Other remaining
+space is filled with the specified 20/10/5/1um `com_bus_slice` cells. Corner
+LEF dimensions, reference bus line and the manifest determine every transform;
+the builder rejects excess widths, ambiguous orders and unfillable gaps.
+
+The example includes four corners, four analog pads, one input-configured
+GPIO and six clamped supply pads (VCCD/VSSD/VDDA/VSSA/VDDIO/VSSIO). Native
+power-pad geometry joins VDDIO_Q to VDDIO and VSSIO_Q to VSSIO; explicit
+`bus_aliases` record these physical joins. Twelve named buses therefore form
+ten net aliases. The GPIO package pad and its core IN remain distinct metal
+nets because a transistor input is not a metal short. GPIO controls use the
+hardened TIE_LO_ESD/TIE_HI_ESD outputs. Electrical configuration and ESD sizing
+are not verified.
+
+`PadLibrary` resolves cross-file dependencies across the supplied PDK GDS
+library before copying a selected hierarchy unchanged. Single-file imports
+are insufficient: wrappers reference base cells in `sky130_fd_io.gds`.
+All input GDS hashes are retained. GDS STRNAME records distinguish undefined
+references from declared empty structures. The selected hierarchy contains
+one vendor-declared empty guard-ring placeholder,
+`sky130_fd_pr__gendlring__example_559591418081`; it is preserved and reported,
+not populated or treated as independently verified geometry. Tests compare
+imported geometry to the resolved source on every layer.
+
+LEF RECT/POLYGON pin frames become GDSFactory electrical ports. The core
+abstract chooses a solid actual-GDS rectangle within each LEF access frame;
+frames sometimes exceed physical metal. Original frames remain in metadata.
+Package probes cover each disconnected metal island within its LEF frame.
+Current complete-library geometry needs no added bus overlays: `strap_buses`
+is false. The earlier experimental overlay option has not been validated on
+the complete library and is not used by either example.
+
+Outputs include `pad_ring.gds`, `manifest.json`, `chip_aliases.json`,
+`core_area.lef` (core coordinates), and `pad_ring.lef` (full-die master with
+periphery/actual-interior OBS). `checks.json` records independent abutment
+intervals, extracted connectivity, raw Magic counts, standalone resolved-cell
+baselines and OpenROAD abstract loading. All 95 primary placement intervals
+have zero gaps over each 600um side. All 5,362 bus probes and 21 tie probes
+connect, with no shorts between declared aliases. Both abstracts load with
+zero OpenROAD errors. Ring Magic drc(full) is **4978**, versus instance-weighted
+standalone baseline **4806**, delta **+172**. This ring is not DRC-clean.
+The earlier 5013/961/+4052 measurements used incomplete dependencies and are
+superseded. Current standalone counts are:
+
+| master suffix | count | instances |
+| --- | ---: | ---: |
+| corner_pad | 3 | 4 |
+| analog_pad | 34 | 4 |
+| vdda_hvc_clamped_pad / vddio_hvc_clamped_pad | 376 each | 1 each |
+| vssa_hvc_clamped_pad / vssio_hvc_clamped_pad | 378 each | 1 each |
+| vssd_lvc_clamped_pad / vccd_lvc_clamped_pad | 48 each | 1 each |
+| gpiov2_pad_wrapped | 3054 | 1 |
+| com_bus_slice_20um / 10um | 0 | 77 / 3 |
+
+`examples/chip_sky130/build.py` fixes the ring at the die origin and the routed
+OTA at `(400, 400)`, maps vdd/vss to VDDA/VSSA, and routes the four analog nets.
+Its no-top-IO Verilog connects actual ring-core pins to the six OTA ports.
+The OpenROAD floorplan core spans the die to admit the full-die BLOCK master;
+ring OBS enforce the manifest core/periphery. Peripheral placement bypasses
+site-row clipping while still enforcing the declared die. The example checks
+all ring/tie/package/core access plus original OTA finger landings in final
+GDS. Chip routing measures 2775um and 26 vias, with zero detailed-route
+DRC. Full-die Magic drc(full) reports **5022** errors. All 5437 physical
+terminals across 20 net aliases pass connectivity, with no inter-alias shorts.
+LVS, ESD sizing/verification, seal ring, density fill and antenna are not done.
+The analog_pad master itself has no ESD structures; the presence of supply
+clamps/GPIO protection does not establish chip ESD protection.
+
+To add a pad type in this library, add a manifest entry with explicit native
+core pin, aliases, physical tie requests and any required filler spacing, then
+check its resolved hierarchy and all final-GDS terminals. The LEF reader
+supports RECT and POLYGON frames; PATH/VIA access primitives fail explicitly.
+To add another PDK's harness, supply its library paths/master names, bus and
+corner alignment conventions, tie geometry and process layer/via mapping;
+`PadLibrary` and filler naming currently target Sky130. A PDK JSON alone does
+not make a new IO library supported. Re-run standalone/ring Magic and LEF
+loading before claiming support. No LVS, ESD, seal-ring or foundry waiver is
+inferred from the raw DRC delta.

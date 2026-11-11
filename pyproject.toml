@@ -23,6 +23,7 @@ include = ["goal*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = ["openroad: requires OpenROAD and a configured platform", "magic: requires Magic and PDK_ROOT"]
 
 [tool.ruff]
